@@ -1,5 +1,6 @@
 * {
   box-sizing: border-box;
+  font-family: 'Murecho', sans-serif;
 }
 
 .top-page-header {
@@ -16,29 +17,43 @@
 }
 
 .furima-icon {
-  width: 10vw;
+  width: 20vw;
   margin-right: 10vw;
 }
 
 .search-form {
   width: 65vw;
   height: 5vh;
-  display: flex;
+  display: flex; justify-content: center;  align-items: center;
   margin-bottom: 5px;
+  position: relative;
 }
 
-.search-form>.input-box {
-  width: 100%;
+.input-box {
+  border: 1px solid #333;
+  border-radius: 25px;
+  outline: 0;
+  background:#eee;
+  width: 85%;
   height: 5vh;
   padding-left: 10px;
+  position: absolute;
+  left:0;
+  top:0;
 }
 
-.search-button {
-  width: 5vh;
-  border: 0;
-  cursor: pointer;
-  background-color: #3ccace;
+#search-btn {
+  height: 5vh;
+  width: 10%;
+  /* cursor: pointer; */
   padding: 8px;
+  position: absolute;
+  top: 0;
+  left: 75%;
+  background:#00A0E9;
+  color:#fff;
+  border:none;
+  border-radius:0 25px 25px 0;
 }
 
 .search-icon {
@@ -57,6 +72,7 @@
 .lists-left {
   display: flex;
   min-width: 200px;
+  padding-left: 30px;
 
 }
 

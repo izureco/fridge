@@ -6,8 +6,10 @@ class User < ApplicationRecord
 
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :family_type
+  belongs_to :eatout_freq
+  belongs_to :appetite
 
-  validates :nickname,    presence: :true
+  validates :nickname,    presence: true
 
 
 end

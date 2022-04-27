@@ -1,9 +1,13 @@
 /* 下部広告部分 */
 /* items/index.htmlの広告cssを所々使いまわしています。 */
 
+a {
+  text-decoration: none;
+}
+
 .ad-footer-contents {
   width: 100vw;
-  background-image: image-url('furima-footer.png');
+  background-image: image-url('fridge-footer.jpeg');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: top center;
@@ -65,4 +69,13 @@
 
 .footer>p {
   font-size: 14px;
+}
+
+.apple-btn {
+  margin-right: 1vw;
+  height: 9vh;
+}
+
+.google-btn {
+  height: 9vh;
 }
