@@ -1,0 +1,120 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Murecho', sans-serif;
+}
+
+.top-page-header {
+  width: 100vw;
+  padding: 2vh 15vw;
+  display: flex;
+  flex-direction: column;
+}
+
+.search-bar-contents {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.furima-icon {
+  width: 20vw;
+  margin-right: 10vw;
+}
+
+.search-form {
+  width: 65vw;
+  height: 5vh;
+  display: flex; justify-content: center;  align-items: center;
+  margin-bottom: 5px;
+  position: relative;
+}
+
+.input-box {
+  border: 1px solid #333;
+  border-radius: 25px;
+  outline: 0;
+  background:#eee;
+  width: 85%;
+  height: 5vh;
+  padding-left: 10px;
+  position: absolute;
+  left:0;
+  top:0;
+}
+
+#search-btn {
+  height: 5vh;
+  width: 10%;
+  /* cursor: pointer; */
+  padding: 8px;
+  position: absolute;
+  top: 0;
+  left: 75%;
+  background:#00A0E9;
+  color:#fff;
+  border:none;
+  border-radius:0 25px 25px 0;
+}
+
+.search-icon {
+  width: 100%;
+}
+
+.nav {
+  font-size: 18px;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  width: 100%;
+  padding: 1vh 0;
+}
+
+.lists-left {
+  display: flex;
+  min-width: 200px;
+  padding-left: 30px;
+
+}
+
+.category-list {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #333333;
+}
+
+.brand-list {
+  text-decoration: none;
+  color: #333333;
+}
+
+.lists-right {
+  display: flex;
+  list-style: none;
+  align-items: flex-end;
+}
+
+
+.user-nickname {
+  text-decoration: none;
+  margin-right: 3vw;
+  color: #333333;
+  font-weight: bold;
+}
+
+
+.logout {
+  text-decoration: none;
+  color: #333333;
+}
+
+.login {
+  text-decoration: none;
+  line-height: 32px;
+  margin-right: 3vw;
+  color: #333333;
+}
+
+.sign-up {
+  text-decoration: none;
+  color: #333333;
+}
