@@ -1,0 +1,130 @@
+<%= render "shared/header" %>
+<div class='main'>
+
+  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
+  <div class='title-contents'>
+    <h2 class='service-title'>
+      時間と食材のロスをなくす
+    </h2>
+    <p class='service-explain'>
+      FURiGEは「おとなり」の冷蔵庫が見られる
+    </p>
+    <p class='service-explain'>
+      新感覚のアプリケーションです
+    </p>
+    <div class='store-btn'>
+      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
+      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
+    </div>
+  </div>
+  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
+
+  <%# FURIMAが選ばれる3つの理由部分 %>
+  <div class='select-reason-contents'>
+    <h2 class='title'>
+      FRiGEの3つの特徴
+    </h2>
+    <ul class='reason-lists'>
+      <li class='list'>
+        <%= image_tag 'salespoint1.jpeg', class:"list-pict" %>
+        <span class='reason-list-number'>1</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>簡単</span>
+          にMy冷蔵庫登録
+        </h3>
+        <p class='reason-list-description'>
+          スマホで冷蔵庫の食材をらくらく入力
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "salespoint2.jpeg", class:"list-pict" %>
+        <span class='reason-list-number'>2</span>
+        <h3 class='reason-list-text'>
+          <span class='reason-list-blue-text'>時短</span>
+          機能がいっぱい
+        </h3>
+        <p class='reason-list-description'>
+          いろんなユーザーの冷蔵庫から買い出しのアイデアをいただこう!<br>
+          今ある食材からレシピを提案してくれる!
+        </p>
+      </li>
+      <li class='list'>
+        <%= image_tag "salespoint3.jpeg", class:"list-pict" %>
+        <span class='reason-list-number'>3</span>
+        <h3 class='reason-list-text'>
+          不要な食べ物を
+          <span class='reason-list-blue-text'>必要な人に</span>
+        </h3>
+        <p class='reason-list-description'>
+          食べなくなった食材をお譲りできます!
+        </p>
+      </li>
+    </ul>
+  </div>
+  <%# /FURIMAが選ばれる3つの理由部分 %>
+
+
+  <%# 商品一覧 %>
+  <div class='item-contents'>
+    <h2 class='title'>みんなの冷蔵庫</h2>
+    <div class="subtitle" >
+      新規投稿商品
+    </div>
+    <ul class='item-lists'>
+
+      <%# 商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+      <li class='list'>
+        <%= link_to "#" do %>
+        <div class='item-img-content'>
+          <%# <%= image_tag "#", class: "item-img" %>
+
+          <%# 商品が売れていればsold outを表示しましょう %>
+          <div class='sold-out'>
+            <span>Sold Out!!</span>
+          </div>
+          <%# //商品が売れていればsold outを表示しましょう %>
+
+        </div>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            <%= "商品名" %>
+          </h3>
+          <div class='item-price'>
+            <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
+            <div class='star-btn'>
+              <%# <%= image_tag "star.png", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <%# //商品のインスタンス変数になにか入っている場合、中身のすべてを展開できるようにしましょう %>
+
+      <%# 商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+      <%# 商品がある場合は表示されないようにしましょう %>
+      <li class='list'>
+        <%= link_to '#' do %>
+        <%= image_tag "https://tech-master.s3.amazonaws.com/uploads/curriculums/images/Rails1-4/sample.jpg", class: "item-img" %>
+        <div class='item-info'>
+          <h3 class='item-name'>
+            商品を出品してね！
+          </h3>
+          <div class='item-price'>
+            <span>99999999円<br>(税込み)</span>
+            <div class='star-btn'>
+              <%# <%= image_tag "#", class:"star-icon" %>
+              <span class='star-count'>0</span>
+            </div>
+          </div>
+        </div>
+        <% end %>
+      </li>
+      <%# //商品がある場合は表示されないようにしましょう %>
+      <%# //商品がない場合は以下のダミー商品が表示されるようにしましょう %>
+    </ul>
+  </div>
+  <%# /商品一覧 %>
+</div>
+
+<%= render "shared/footer" %>
