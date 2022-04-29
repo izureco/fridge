@@ -4,12 +4,13 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
+  validates :nickname,    presence: true
+
   extend ActiveHash::Associations::ActiveRecordExtensions
   belongs_to :family_type
   belongs_to :eatout_freq
   belongs_to :appetite
 
-  validates :nickname,    presence: true
-
+  has_many :boxes
 
 end
