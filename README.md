@@ -67,7 +67,7 @@ Things you may want to cover:
 
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
-| name             | string     | null: false |
+| tag_name         | string     | null: false |
 
 ### Association :Tags
 

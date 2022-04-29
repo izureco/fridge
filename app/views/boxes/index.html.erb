@@ -76,18 +76,23 @@
           <%= link_to "#" do %>
             <div class='item-img-content'>
               <%= image_tag box.image, class: "item-img" %>
-            </div>
-            <div class='item-info'>
               <h3 class='item-name'>
                 <%= box.box_title %>
               </h3>
-              <div class='item-price'>
-                <span><%= "販売価格" %>円<br><%= '配送料負担' %></span>
-                <div class='star-btn'>
-                  <%# <%= image_tag "star.png", class:"star-icon" %>
-                  <span class='star-count'>0</span>
+            </div>
+            <div class='item-info'>
+            <% count = 0%>
+            <% @box_tag_list.each do |relation| %>
+              <% if box.id == relation.box_id %>
+                <div class='item-tag'>
+                  <%= relation.boxtag.tag_name %>
+                  <% count = count + 1 %>
                 </div>
-              </div>
+              <% end %>
+            <% end %>
+            <% if count == 0 %>
+              <div class='item-tag'>未登録</div>
+            <% end %>
             </div>
           <% end %>
         </li>

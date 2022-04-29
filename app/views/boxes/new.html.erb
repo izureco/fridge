@@ -3,9 +3,9 @@
 <div class="items-sell-contents">
   <div class="items-sell-main">
     <h2 class="items-sell-title">MY FRiDGE <i class="fa-solid fa-box-archive"></i> を登録しよう</h2>
-    <%= form_with model: @box, local: true do |f| %>
+    <%= form_with model: @box_form, url: boxes_path, method: :post, local: true do |f| %>
 
-    <%= render 'shared/error_messages', model: @box %>
+    <%= render 'shared/error_messages', model: @box_form %>
 
     <%# アイコン画像を選べるように %>
     <div class="img-upload">
@@ -38,7 +38,7 @@
         MY FRiDGE <i class="fa-solid fa-box-archive"></i> のタグ
         <span class="indispensable">必須</span>
       </div>
-      <%# <%= f.text_field :tag_list, value: @box.tag_list.join(''), class:"items-text", id:"item-name", placeholder:"例) 2人暮らし, 倹約家, 節約, 30代" ,maxlength:"40" %>
+      <%= f.text_field :tag_name, class:"items-text", id:"item-name", placeholder:"例) 2人暮らし, 倹約家, 節約, 30代" ,maxlength:"40" %>
 
     </div>
 
