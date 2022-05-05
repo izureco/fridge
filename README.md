@@ -63,7 +63,7 @@ Things you may want to cover:
 - belongs_to  :box
 - belongs_to  :tag
 
-## Tagsテーブル
+## Boxtagsテーブル
 
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
@@ -77,8 +77,8 @@ Things you may want to cover:
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| box_space_id  | integer    | null: false                    |
-| food_title       | integer    | null: false                    |
+| box_space_id     | integer    | null: false                    |
+| food_title       | string     | null: false                    |
 | number_title     | integer    | null: false                    |
 | purchase_date    | date       | null: false                    |
 | expiry_date      | date       | null: false                    |

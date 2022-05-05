@@ -1,0 +1,186 @@
+<%= render "shared/header" %>
+
+<div class="items-sell-contents">
+  <div class="items-sell-main" id="test">
+    <h2 class="items-sell-title">食材 <i class="fa-solid fa-box-archive"></i> を登録しよう</h2>
+    <h3>登録する食材のカテゴリを選ぼう!</h3>
+  </div>
+  <div class="items-nav">
+    <ul>
+      <li><button id="fish"><i class="fa-solid fa-fish fa-2x"></i>Fish</button>
+      <li><button id="vegitable"><i class="fa-solid fa-carrot fa-2x"></i>Vegitable</button></li>
+      <li><button id="meat"><i class="fa-solid fa-cow fa-2x"></i>Meat</button></li>
+      <li><button id="drink"><i class="fa-solid fa-wine-bottle fa-2x"></i>Drink</button></li>
+      <li><button id="flozen"><i class="fa-solid fa-ice-cream fa-2x"></i>Flozen</button></li>
+      <%# <li><button class="btn btn--blue btn--cubic" id="fish"><i class="fa-solid fa-fish fa-2x"></i>Fish</button>
+      <li><button class="btn btn--blue btn--cubic" id="vegitable"><i class="fa-solid fa-carrot fa-2x"></i>Vegitable</button></li>
+      <li><button class="btn btn--blue btn--cubic" id="meat"><i class="fa-solid fa-cow fa-2x"></i>Meat</button></li>
+      <li><button class="btn btn--blue btn--cubic" id="drink"><i class="fa-solid fa-wine-bottle fa-2x"></i>Drink</button></li>
+      <li><button class="btn btn--blue btn--cubic" id="flozen"><i class="fa-solid fa-ice-cream fa-2x"></i>Flozen</button></li> %>
+    </ul>
+  </div>
+
+  <div class="items-sell-main">
+    <h2>冷蔵庫に入っている食材を入力しよう!</h2>
+    <div id="div_default"><h2>上の食材カテゴリを選んでね</h2>
+    </div>
+
+    <%= form_with model: @form, url: box_foods_path, method: :post, local: true do |form| %>
+      <%= render 'shared/error_messages', model: @form %>
+      <div id="div_fish">
+        <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+      </div>
+
+      <div id="div_vegitable">
+        <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+      </div>
+
+      <div id="div_meat">
+          <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+      </div>
+
+      <div id="div_drink">
+        <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+      </div>
+
+      <div id="div_flozen">
+        <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+      </div>
+
+
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= form.submit "登録する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+    <% end %>
+  </div>
+</div>
+
+<script>
+  $(document).ready(function(){
+    //デフォルトで表示する要素を指定
+
+    $('#div_default').show();
+    $('#div_fish').hide();
+    $('#div_vegitable').hide();
+    $('#div_meat').hide();
+    $('#div_drink').hide();
+    $('#div_flozen').hide();
+
+    //buttonがクリックされたら処理を実行
+    $('#fish').click(function () {
+      $('#test').toggleClass('show');
+      //#appがshowのclassを持っていれば
+      if($('#test').hasClass('show')){
+            //要素の表示を切り替える
+          $('#div_fish').show();
+          $('#div_vegitable').hide();
+          $('#div_meat').hide();
+          $('#div_drink').hide();
+          $('#div_flozen').hide();
+      }else{
+          $('#div_fish').hide();
+          $('#div_vegitable').hide();
+          $('#div_meat').hide();
+          $('#div_drink').hide();
+          $('#div_flozen').hide();
+      }
+      $('#fish').attr('data-params','category='+'1')
+    });
+
+    $('#vegitable').click(function () {
+        //toggleClassでshowのclassを追加または削除
+      $('#test').toggleClass('show');
+      //#appがshowのclassを持っていれば
+      if($('#test').hasClass('show')){
+            //要素の表示を切り替える
+          $('#div_fish').hide();
+          $('#div_vegitable').hide();
+          $('#div_meat').hide();
+          $('#div_drink').hide();
+          $('#div_flozen').hide();
+      }else{
+          $('#div_fish').hide();
+          $('#div_vegitable').show();
+          $('#div_meat').hide();
+          $('#div_drink').hide();
+          $('#div_flozen').hide();
+      }
+    });
+
+    $('#meat').click(function () {
+      console.log("fishがクリック")
+        //toggleClassでshowのclassを追加または削除
+      $('#test').toggleClass('show');
+      //#appがshowのclassを持っていれば
+      if($('#test').hasClass('show')){
+            //要素の表示を切り替える
+          $('#div_fish').hide();
+          $('#div_vegitable').hide();
+          $('#div_meat').hide();
+          $('#div_drink').hide();
+          $('#div_flozen').hide();
+      }else{
+          $('#div_fish').hide();
+          $('#div_vegitable').hide();
+          $('#div_meat').show();
+          $('#div_drink').hide();
+          $('#div_flozen').hide();
+      }
+    });
+
+    $('#drink').click(function () {
+      console.log("fishがクリック")
+        //toggleClassでshowのclassを追加または削除
+      $('#test').toggleClass('show');
+      //#appがshowのclassを持っていれば
+      if($('#test').hasClass('show')){
+            //要素の表示を切り替える
+          $('#div_fish').hide();
+          $('#div_vegitable').hide();
+          $('#div_meat').hide();
+          $('#div_drink').hide();
+          $('#div_flozen').hide();
+      }else{
+          $('#div_fish').hide();
+          $('#div_vegitable').hide();
+          $('#div_meat').hide();
+          $('#div_drink').show();
+          $('#div_flozen').hide();
+      }
+    });
+
+    $('#flozen').click(function () {
+      console.log("fishがクリック")
+        //toggleClassでshowのclassを追加または削除
+      $('#test').toggleClass('show');
+      //#appがshowのclassを持っていれば
+      if($('#test').hasClass('show')){
+            //要素の表示を切り替える
+          $('#div_fish').hide();
+          $('#div_vegitable').hide();
+          $('#div_meat').hide();
+          $('#div_drink').hide();
+          $('#div_flozen').hide();
+      }else{
+          $('#div_fish').hide();
+          $('#div_vegitable').hide();
+          $('#div_meat').hide();
+          $('#div_drink').hide();
+          $('#div_flozen').show();
+      }
+    });
+  });
+  // function setState(isA) {
+  //   if (isA ==0){
+  //     document.getElementById("divA").style.display="block"
+  //   }
+  //   else{
+  //     document.getElementById("divA").style.display="none"
+  //   }
+  // }
+</script>
+
+<%= render "shared/footer" %>

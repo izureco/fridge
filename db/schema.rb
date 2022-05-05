@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_04_29_033647) do
+ActiveRecord::Schema.define(version: 2022_05_01_082301) do
 
   create_table "active_storage_attachments", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.string "name", null: false
@@ -57,6 +57,21 @@ ActiveRecord::Schema.define(version: 2022_04_29_033647) do
     t.datetime "updated_at", precision: 6, null: false
   end
 
+  create_table "foods", options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
+    t.boolean "availability"
+    t.string "food_title", null: false
+    t.integer "number_title"
+    t.date "purchase_date", null: false
+    t.date "expiry_date", null: false
+    t.integer "price", null: false
+    t.integer "give_id"
+    t.integer "category_id", null: false
+    t.bigint "box_id"
+    t.datetime "created_at", precision: 6, null: false
+    t.datetime "updated_at", precision: 6, null: false
+    t.index ["box_id"], name: "index_foods_on_box_id"
+  end
+
   create_table "taggings", id: :integer, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8", force: :cascade do |t|
     t.integer "tag_id"
     t.string "taggable_type"
@@ -101,5 +116,6 @@ ActiveRecord::Schema.define(version: 2022_04_29_033647) do
   add_foreign_key "box_boxtag_relations", "boxes"
   add_foreign_key "box_boxtag_relations", "boxtags"
   add_foreign_key "boxes", "users"
+  add_foreign_key "foods", "boxes"
   add_foreign_key "taggings", "tags"
 end

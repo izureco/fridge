@@ -12,8 +12,10 @@ class BoxesController < ApplicationController
     @box_form = BoxForm.new(box_form_params)
     tag_list = params[:box_form][:tag_name].split(",")
     if @box_form.valid?
-      @box_form.save(tag_list)
-      redirect_to root_path
+      box_id = @box_form.save(tag_list)
+      # 今作ったboxのIDを入れたい
+      # paramsにidが格納されてないので、Not found errorになる。
+      redirect_to new_box_food_path(box_id)
     else
       render :new
     end

@@ -69,3 +69,5 @@ end
 gem 'active_hash'
 
 gem 'acts-as-taggable-on', '~> 6.0'
+
+gem 'rails-i18n'

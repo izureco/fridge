@@ -73,7 +73,7 @@
     <ul class='item-lists'>
       <% @boxes.each do |box| %>
         <li class='list'>
-          <%= link_to "#" do %>
+          <%= link_to new_box_food_path(box.id) do %>
             <div class='item-img-content'>
               <%= image_tag box.image, class: "item-img" %>
               <h3 class='item-name'>

@@ -18,15 +18,17 @@ class BoxForm
     validates :user_id
   end
 
-  # saveメソッド定義
+  # BoxesテーブルとBoxtagsテーブルのFormオブジェクト
   def save(tag_list)
     box = Box.create(box_title: box_title, description: description, image: image, user_id: user_id)
     i = 0
 
-    if tag_list != nil
-      box_boxtag_records = BoxBoxtagRelation.where(box_id: box.id)
-      box_boxtag_records.destroy_all
-    end
+    # if tag_list != nil
+    #   # BoxBoxtagRelationテーブル : Boxとtagの中間テーブル
+    #   # 中間テーブルのbox_idと合致するレコードを探し、紐付けをリセット
+    #   box_boxtag_records = BoxBoxtagRelation.where(box_id: box.id)
+    #   box_boxtag_records.destroy_all
+    # end
 
     tag_list.each do |t|
       relative_tag = Boxtag.where(tag_name: tag_list[i]).first_or_initialize
@@ -34,5 +36,6 @@ class BoxForm
       BoxBoxtagRelation.create(box_id: box.id, boxtag_id: relative_tag.id)
       i += 1
     end
+    return box.id
   end
 end
