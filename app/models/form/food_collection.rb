@@ -50,13 +50,11 @@ class Form::FoodCollection < Form::Base
   end
 
   def save
-    errors = []
     is_success = true
     ava_count = 0
     Food.transaction do
       self.foods.each do |food|
         food.valid?
-        errors << food.errors.full_messages
         if food.availability
           f = Food.new(box_id: box_id)
           food.box_id = f.box_id

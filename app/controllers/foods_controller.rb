@@ -5,8 +5,7 @@ class FoodsController < ApplicationController
   end
 
   def create
-    binding.pry
-    data = params.require('category')
+    # data = params.require('category')
     @form = Form::FoodCollection.new(food_collection_params)
     if @form.save == true
       redirect_to root_path, notice: "商品を登録しました"
