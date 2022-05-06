@@ -3,6 +3,12 @@
   font-family: 'Murecho', sans-serif;
 }
 
+html {
+  -webkit-box-sizing: border-box;
+  box-sizing: border-box;
+  /* font-size: 62.5%; */
+}
+
 .top-page-header {
   width: 100vw;
   padding: 2vh 15vw;
@@ -43,7 +49,6 @@
 }
 
 #search-btn {
-  height: 5vh;
   width: 10%;
   /* cursor: pointer; */
   padding: 8px;
@@ -58,6 +63,7 @@
 
 .search-icon {
   width: 100%;
+  height: 100%;
 }
 
 .nav {
@@ -93,12 +99,79 @@
   align-items: flex-end;
 }
 
+/* header各ボタン */
+.btn,
+a.btn,
+button.btn {
+  font-size: 1rem;
+  font-weight: 800;
+  line-height: 0.2;
+  position: relative;
+  display: inline-block;
+  padding: 1rem 4rem;
+  cursor: pointer;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  -webkit-transition: all 0.3s;
+  transition: all 0.3s;
+  text-align: center;
+  vertical-align: middle;
+  text-decoration: none;
+  letter-spacing: 0.1em;
+  color: #212529;
+  border-radius: 0.5rem;
+}
+
+a.btn-border-shadow {
+  padding: calc(1.5rem - 12px) 3rem 1.5rem;
+
+  background: #fff;
+}
+
+a.btn-border-shadow:before {
+  position: absolute;
+  top: -6px;
+  left: -6px;
+
+  width: 100%;
+  height: 100%;
+
+  content: "";
+  -webkit-transition: all 0.3s ease;
+  transition: all 0.3s ease;
+
+  border: 3px solid #000;
+  border-radius: 0.5rem;
+}
+
+a.btn-border-shadow:hover {
+  padding: calc(1.5rem - 6px) 3rem;
+}
+
+a.btn-border-shadow:hover:before {
+  top: 0;
+  left: 0;
+}
+
+a.btn-border-shadow--color2 {
+  border-radius: 100vh;
+}
+
+a.btn-border-shadow--color2:before {
+  border-radius: 100vh;
+  -webkit-box-shadow: 3px 3px 0 #00A0E9;
+  box-shadow: 3px 3px 0 #00A0E9;
+}
+/* headerボタン */
 
 .user-nickname {
   text-decoration: none;
   margin-right: 3vw;
   color: #333333;
   font-weight: bold;
+  margin-left: 30px;
 }
 
 

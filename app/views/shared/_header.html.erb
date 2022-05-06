@@ -13,7 +13,8 @@
     </ul>
     <ul class='lists-right'>
       <% if user_signed_in? %>
-        <li><%= link_to "#{current_user.nickname}のマイページ", "#", class: "user-nickname" %></li>
+        <li><%= link_to "MY冷蔵庫を登録", new_box_path, class: "btn btn-border-shadow btn-border-shadow--color2" %></li>
+        <li><%= link_to "マイページ", '#', class: "user-nickname" %></li>
         <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete, class: "logout" %></li>
       <% else %>
         <li><%= link_to 'ログイン', new_user_session_path, class: "login" %></li>

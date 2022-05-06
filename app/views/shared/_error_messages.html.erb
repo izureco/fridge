@@ -1,9 +1,13 @@
-<% if model.errors.any? %>
-<div class="error-alert">
-  <ul>
-    <% model.errors.full_messages.each do |message| %>
-    <li class='error-message'><%= message %></li>
+<% model.foods.each do |food| %>
+  <% if food.errors.any? %>
+    <% if food.availability %>
+      <div class="error-alert">
+        <ul>
+          <% food.errors.full_messages.each do |message| %>
+          <li class='error-message'><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
     <% end %>
-  </ul>
-</div>
+  <% end %>
 <% end %>

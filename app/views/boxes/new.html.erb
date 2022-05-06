@@ -1,0 +1,56 @@
+<%= render "shared/header" %>
+
+<div class="items-sell-contents">
+  <div class="items-sell-main">
+    <h2 class="items-sell-title">MY FRiDGE <i class="fa-solid fa-box-archive"></i> を登録しよう</h2>
+    <%= form_with model: @box_form, url: boxes_path, method: :post, local: true do |f| %>
+
+    <%= render 'shared/error_messages', model: @box_form %>
+
+    <%# アイコン画像を選べるように %>
+    <div class="img-upload">
+      <div class="weight-bold-text">
+        MY FRiDGE <i class="fa-solid fa-box-archive"></i> のアイコン
+        <span class="indispensable">必須</span>
+      </div>
+      <div class="click-upload">
+        <p>
+          クリックしてファイルをアップロード
+        </p>
+        <%= f.file_field :image, id:"item-image" %>
+      </div>
+    </div>
+    <%# My FRiGEの名前と説明 %>
+    <div class="new-items">
+      <div class="weight-bold-text">
+        MY FRiDGE <i class="fa-solid fa-box-archive"></i> のタイトル
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_area :box_title, class:"items-text", id:"item-name", placeholder:"例) Penguinの冷蔵庫", maxlength:"40" %>
+      <div class="items-explain">
+        <div class="weight-bold-text">
+          MY FRiDGE <i class="fa-solid fa-box-archive"></i> の説明
+          <span class="indispensable">必須</span>
+        </div>
+        <%= f.text_area :description, class:"items-text", id:"item-info", placeholder:"例）夫婦2人暮らしです。食費を毎月20,000円以内に抑えるため、日々奮闘中です!!" ,rows:"7" ,maxlength:"100" %>
+      </div>
+      <div class="weight-bold-text">
+        MY FRiDGE <i class="fa-solid fa-box-archive"></i> のタグ
+        <span class="indispensable">必須</span>
+      </div>
+      <%= f.text_field :tag_name, class:"items-text", id:"item-name", placeholder:"例) 2人暮らし, 倹約家, 節約, 30代" ,maxlength:"40" %>
+
+    </div>
+
+    <%# 下部ボタン %>
+    <div class="sell-btn-contents">
+      <%= f.submit "登録する" ,class:"sell-btn" %>
+      <%=link_to 'もどる', root_path, class:"back-btn" %>
+    </div>
+    <%# /下部ボタン %>
+  </div>
+  <% end %>
+
+</div>
+
+<%= render "shared/footer" %>

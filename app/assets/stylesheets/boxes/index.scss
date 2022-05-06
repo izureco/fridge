@@ -64,7 +64,7 @@ a {
   content: '';
   width: 70px;
   height: 4px;
-  background-color: #3ccace;
+  background-color: #00A0E9;
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -99,7 +99,7 @@ a {
   font-size: 30px;
   text-align: center;
   line-height: 60px;
-  background-color: #3ccace;
+  background-color: #00A0E9;
   color: #fff;
 }
 
@@ -110,7 +110,7 @@ a {
 }
 
 .reason-list-blue-text {
-  color: #3ccace;
+  color: #00A0E9;
 }
 
 .reason-list-description {
@@ -180,7 +180,7 @@ a {
   content: '';
   width: 70px;
   height: 4px;
-  background-color: #3ccace;
+  background-color: #00A0E9;
   position: absolute;
   bottom: -10px;
   left: 50%;
@@ -233,7 +233,7 @@ a {
   font-size: 3vh;
   margin: 1vh 0;
   text-decoration: none;
-  color: #3ccace;
+  color: #00A0E9;
   font-weight: bold;
 }
 
@@ -253,28 +253,26 @@ a {
 
 .item-img-content {
   position: relative;
+  margin-bottom: 15px;
 }
+
+.item-img-content h3{
+  position: absolute;
+  color: #fff;
+  top: 0;
+  left: 0;
+  margin: 0;
+  background: #2F70BE;
+  font-size: 16px;
+  line-height: 1;
+  padding: 5px 10px;
+}
+
 
 .item-img {
   width: 33vh;
   height: 33vh;
 }
-
-.sold-out {
-  position: absolute;
-  top: 40%;
-  width: 100%;
-  text-align: center;
-  background-color: crimson;
-  transform: skewY(-10deg);
-}
-
-.sold-out>span {
-  color: #FFF;
-  font-size: 45px;
-  font: bold;
-}
-
 
 .item-info {
   background-color: #FFF;
@@ -286,26 +284,17 @@ a {
   font-size: 2.5vh;
 }
 
-.item-price {
-  font-size: 1.5vh;
-  display: flex;
-  justify-content: space-between;
-}
-
-
-.star-btn {
-  display: flex;
-  align-items: center;
-}
-
-.star-icon {
-  height: 2vh;
-  width: 2vh;
-  margin-right: 0.5vw;
-}
-
-.star-count {
-  font-size: 2vh;
+.item-tag {
+  font-size: 80%;
+	display: inline-block;
+	margin: 0 .1em .6em 0;
+	padding: .6em;
+	line-height: 1;
+	text-decoration: none;
+	color: #2F70BE;
+	background-color: #fff;
+	border: 1px solid #2F70BE;
+	border-left: 5px solid #2F70BE;
 }
 
 /* //商品一覧 */

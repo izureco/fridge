@@ -34,61 +34,61 @@ Things you may want to cover:
 
 ### Association :Users
 
-- has_many :fridges
+- has_many :boxes
 - has_many :donates
 
-## Fridges テーブル
+## Boxes テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| fridge_title     | string     | null: false                    |
+| box_title        | string     | null: false                    |
 | description      | text       | null: false                    |
 | user             | references | null: false, foreign_key: true |
 
-### Association :Fridges
+### Association :Boxes
 
 - belongs_to  :user
-- has_many    :tags, through fridge_tags
+- has_many    :tags, through box_tags
 - has_one     :food
 
-## Fridge-tags テーブル
+## Box-tags テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| fridge           | references | null: false, foreign_key: true |
+| box              | references | null: false, foreign_key: true |
 | tag              | references | null: false, foreign_key: true |
 
-### Association :Fridge-tags
+### Association :Box-tags
 
-- belongs_to  :fridge
+- belongs_to  :box
 - belongs_to  :tag
 
-## Tagsテーブル
+## Boxtagsテーブル
 
 | Column           | Type       | Options     |
 | ---------------- | ---------- | ----------- |
-| name             | string     | null: false |
+| tag_name         | string     | null: false |
 
 ### Association :Tags
 
-- has_many    :fridges, through fridge_tags
+- has_many    :boxes, through box_tags
 
 ## Foods テーブル
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| fridge_space_id  | integer    | null: false                    |
-| food_title       | integer    | null: false                    |
+| box_space_id     | integer    | null: false                    |
+| food_title       | string     | null: false                    |
 | number_title     | integer    | null: false                    |
 | purchase_date    | date       | null: false                    |
 | expiry_date      | date       | null: false                    |
 | price            | integer    | null: false                    |
 | give_id          | integer    |                                |
-| fridge           | references | null: false, foreign_key: true |
+| box              | references | null: false, foreign_key: true |
 
 ### Association :Foods
 
-- belongs_to  :fridge
+- belongs_to  :box
 - has_one     :donate
 
 ## Donates テーブル
