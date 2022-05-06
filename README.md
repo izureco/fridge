@@ -1,26 +1,51 @@
-# README
+# アプリケーション名
+冷蔵庫管理アプリケーション FRiDE
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# アプリケーション概要
+- 冷蔵庫
 
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-# テーブル設計
+# アプリケーション作成の背景
+## ペルソナ
 ## 必要機能
 
-(1)ユーザー管理機能
-(2)冷蔵庫商品管理機能
-(3)食材寄付機能
-(4)献立提案機能
+# 要件定義
 
+# 実装した機能説明
+- 冷蔵庫の登録画面
+- 冷蔵庫の食材登録画面
+- 他のユーザーの冷蔵庫を閲覧する
+
+# 実装予定の機能
+1. 食材の寄付機能
+ - どのように実装しようとしているか??
+2. 保存した食材を元に、楽天レシピAPIと連動して、献立を提案
+ - どのように実装しようとしているか??
+3. タグ検索機能
+ - 冷蔵庫のタグから、該当する冷蔵庫を一覧表示させる。
+
+# 工夫したポイント
+- 
+- 
+
+# URL
+https://fridge-izumi.herokuapp.com/
+
+# テスト用アカウント
+- Basic認証パスワード : admin
+- basic認証ID : 1111
+- メールアドレス : 
+- パスワード : 
+
+# 利用方法
+## 冷蔵庫投稿
+1. トップページのヘッダーからユーザーの新規登録を行う
+2. 新規冷蔵庫作成ボタンから、冷蔵庫の内容を入力して登録する
+
+## 冷蔵庫検索
+1. 
+2. 
+
+# データベース設計
 ## Users テーブル
 
 | Column             | Type    | Options                   |
@@ -77,7 +102,7 @@ Things you may want to cover:
 
 | Column           | Type       | Options                        |
 | ---------------- | ---------- | ------------------------------ |
-| box_space_id     | integer    | null: false                    |
+| availability     | boolean    |                                |
 | food_title       | string     | null: false                    |
 | number_title     | integer    | null: false                    |
 | purchase_date    | date       | null: false                    |
@@ -119,13 +144,10 @@ Things you may want to cover:
 
 - belongs_to : donate
 
+# 画面遷移図
 
-* Database initialization
 
-* How to run the test suite
+# 開発環境
 
-* Services (job queues, cache servers, search engines, etc.)
+# ローカルでの動作方法
 
-* Deployment instructions
-
-* ...
