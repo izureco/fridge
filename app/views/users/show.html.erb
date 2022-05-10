@@ -1,0 +1,36 @@
+<%= render "shared/header" %>
+
+  <div class='item-contents'>
+    <div class="subtitle" ><%= @user.nickname %>さんのMY FRiDGE
+    </div>
+    <ul class='item-lists'>
+      <% @boxes.each do |box| %>
+        <li class='list'>
+          <%= link_to box_path(box.id) do %>
+            <div class='item-img-content'>
+              <%= image_tag box.image, class: "item-img" %>
+              <h3 class='item-name'>
+                <%= box.box_title %>
+              </h3>
+            </div>
+            <div class='item-info'>
+            <% count = 0%>
+            <% @box_tag_list.each do |relation| %>
+              <% if box.id == relation.box_id %>
+                <div class='item-tag'>
+                  <%= relation.boxtag.tag_name %>
+                  <% count = count + 1 %>
+                </div>
+              <% end %>
+            <% end %>
+            <% if count == 0 %>
+              <div class='item-tag'>未登録</div>
+            <% end %>
+            </div>
+          <% end %>
+        </li>
+      <% end %>
+    </ul>
+  </div>
+
+<%= render "shared/footer" %>

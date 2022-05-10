@@ -1,0 +1,134 @@
+/* border-bottom: 1px solid #eee; */
+.items-nav {
+  background-color: #FFF;
+  width: 80vw;
+  min-width: 450px;
+  padding: 5vh 10vw;
+}
+
+.items-nav ul{
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}
+
+.items-nav li{
+
+  margin-right: 5px;
+}
+
+.items-sell-contents {
+  background-color: #f5f5f5;
+  font-family: "Source Sans Pro", Helvetica, Arial, "æ¸¸ã‚´ã‚·ãƒƒã‚¯ä½“", "YuGothic", "ãƒ¡ã‚¤ãƒªã‚ª", "Meiryo", sans-serif;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  /* flex-direction: column; */
+  min-width: 500px;
+}
+
+.items-sell-main {
+  background-color: #FFF;
+  width: vw;
+  min-width: 450px;
+  padding: 10vh 10vw;
+}
+
+.items-sell-main h3{
+  font-weight: 400;
+}
+
+.items-sell-title {
+  font-size: 32px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 30px;
+  color: #0099e8;
+}
+
+.item-table{
+  width: 75%;
+  margin: 30px auto;
+  text-align: center;
+}
+
+.item-tr{
+  text-align: center;
+  font-size: 20px;
+  font-weight: 400;
+}
+
+.item-tr td{
+  font-size: 20px;
+}
+
+
+/* 共通 */
+.indispensable {
+  background: #ea352d;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+/* タブ関係 */
+.tab-area {
+  display: flex;
+  justify-content: space-around;
+  background-color: #222e3e;
+  cursor: pointer;
+  margin-top: 30px;
+  .tab {
+    width: 200px;
+    height: 60px;
+    line-height: 30px;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+    border-right: 1px solid #50637b;
+    border-left: 1px solid #222e3e;
+  }
+  .tab.active {
+    background-color: #ccc;
+    color: #222e3e;
+    border: none;
+  }
+}
+.content-area {
+  font-size: 30px;
+  text-align: center;
+  .content {
+    display: none;
+  }
+  .content.show {
+    margin-top: 50px;
+    display: block;
+  }
+}
+
+/* 下部ボタン */
+.sell-btn-contents {
+  width: 100%;
+  text-align: center;
+}
+
+.sell-btn {
+  background: #0099e8;
+  border: 1px solid #0099e8;
+  color: #fff;
+  width: 100%;
+  height: 50px;
+  font-size: 14px;
+  margin-bottom: 4vh;
+}
+
+.back-btn {
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  padding: 15px 35%;
+  text-decoration: none;
+}

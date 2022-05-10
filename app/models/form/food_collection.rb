@@ -59,7 +59,7 @@ class Form::FoodCollection < Form::Base
           f = Food.new(box_id: box_id)
           food.box_id = f.box_id
           # category_idを付与できるまで、一時的な処置
-          food.category_id = 1
+          # food.category_id = 1
           is_success = false unless food.save
           ava_count += 1
         end

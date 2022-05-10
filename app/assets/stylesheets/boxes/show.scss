@@ -1,0 +1,119 @@
+/* 共通 */
+.indispensable {
+  background: #ea352d;
+  margin-left: 8px;
+  padding: 3px;
+  border-radius: 2px;
+  color: #fff;
+  font-size: 12px;
+  font-weight: bold;
+}
+
+
+/* 下部ボタン */
+.sell-btn-contents {
+  width: 100%;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.sell-btn {
+  background: #0099e8;
+  border: 1px solid #0099e8;
+  color: #fff;
+  margin-bottom: 4vh;
+}
+
+.back-btn {
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  // padding: 15px 35%;
+  text-decoration: none;
+}
+
+.sell-btn1 {
+  width: 200px;
+  height: 100px;
+}
+
+.back-btn1 {
+  width: 200px;
+  height: 100px;
+}
+
+/* /下部ボタン */
+
+/* タブ関係 */
+.tab-area {
+  display: flex;
+  justify-content: space-around;
+  background-color: #222e3e;
+  cursor: pointer;
+  margin-top: 30px;
+  .tab {
+    width: 200px;
+    height: 60px;
+    line-height: 30px;
+    text-align: center;
+    padding: 10px 0;
+    color: white;
+    border-right: 1px solid #50637b;
+    border-left: 1px solid #222e3e;
+  }
+  .tab.active {
+    background-color: #ccc;
+    color: #222e3e;
+    border: none;
+  }
+}
+.content-area {
+  font-size: 30px;
+  text-align: center;
+  .content {
+    display: none;
+  }
+  .content.show {
+    margin-top: 50px;
+    display: block;
+  }
+}
+/* レシピ関係 */
+
+#recipe_list{
+  display: flex;
+  justify-content: space-around;
+}
+
+#recipe_list li {
+  list-style: none;
+  width: 25%;
+}
+
+#recipe_list img {
+  width: 100%;
+}
+#recipe_list h2 {
+  font-size: 14px;
+}
+#recipe_list p {
+  font-size: 12px;
+}
+
+.item-contents {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 0;
+}
+
+.items-sell-main {
+  background-color: #FFF;
+  width: 70vw;
+  min-width: 450px;
+  padding: 10vh 15vw;
+}

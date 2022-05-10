@@ -1,0 +1,67 @@
+<%= render "shared/header" %>
+
+  <div class='item-contents'>
+    <% if @foods.present? %>
+      <div class="subtitle" ><%= @box.box_title %>の食材一覧
+      </div>
+      <div class="tab-area">
+        <div class="tab active">
+          <i class="fa-solid fa-fish fa-2x"></i>Fish
+        </div>
+        <div class="tab">
+          <i class="fa-solid fa-carrot fa-2x"></i>Vegitable
+        </div>
+        <div class="tab">
+          <i class="fa-solid fa-cow fa-2x"></i>Meat
+        </div>
+        <div class="tab">
+          <i class="fa-solid fa-wine-bottle fa-2x"></i>Drink
+        </div>
+        <div class="tab">
+          <i class="fa-solid fa-ice-cream fa-2x"></i>Flozen
+        </div>
+      </div>
+      <div class="content-area">
+        <div class="content show">
+          <ul class='item-lists'>
+            <% @foods.each do |food| %>
+              <li class='list'>
+                <div class='item-img-content'>
+                  <h3 class='item-name'>
+                    <%= food.food_title %>
+                    <input type="hidden" id="food_title" value="<%= food.food_title %>">
+                  </h3>
+                </div>
+              </li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="content">
+          野菜野菜野菜
+        </div>
+        <div class="content">
+          肉肉肉
+        </div>
+      </div>
+
+      <%# 楽天レシピAPIのレシピランキングを表示 %>
+      <ul id="recipe_list"></ul>
+      <%# 楽天レシピAPIのレシピランキングを表示 %>
+
+    <% else %>
+      <div class="items-sell-main">
+        <div class="subtitle" ><%= @box.box_title %>の食材を登録しましょう!!
+        </div>
+
+        <div class="sell-btn-contents">
+          <div class="sell-btn1">
+            <%= link_to "食材登録", new_box_food_path(@box.id), class:"sell-btn" %>
+          </div>
+          <div class="back-btn1">
+            <%= link_to 'もどる', root_path, class:"back-btn" %>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  </div>
+<%= render "shared/footer" %>
