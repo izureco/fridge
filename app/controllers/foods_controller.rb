@@ -6,7 +6,6 @@ class FoodsController < ApplicationController
 
   def create
     @form = Form::FoodCollection.new(food_collection_params)
-    binding.pry
     if @form.save == true
       redirect_to root_path, notice: "商品を登録しました"
     else

@@ -1,5 +1,6 @@
 // FIXME : 1回ロードしないとタブが切り替わらない
-$(function() {
+const tab = () => {
+// $(function() {
   let tabs = $(".tab"); // tabのクラスを全て取得し、変数tabsに配列で定義
   let tab_id = 1
   $(".tab").on("click", function() { // tabをクリックしたらイベント発火
@@ -9,14 +10,15 @@ $(function() {
     $(".content").removeClass("show").eq(index).addClass("show"); // showクラスを消して、contentクラスのindex番目にshowクラスを追加
   })
 
+  // どのタブが選択されたか判断
+  // 1) そのときのfood.titleのvalueを取得
+  // 2) 
   $("#tab-fish.tab").on("click", function(){
-    // どのタブが選択されたか判断
     tab_id = $("#tab-fish.tab").data("value");
     $("#send-data").val(tab_id)
   });
 
   $("#tab-veg.tab").on("click", function(){
-    // タブのIDを取得
     tab_id = $("#tab-veg.tab").data("value");
     $("#send-data").val(tab_id)
     debugger;
@@ -26,5 +28,6 @@ $(function() {
   //   debugger;
   //   $.post('box_foods_path',{category_id: tab_id})
   // })
+}
 
-})
+window.addEventListener('DOMContentLoaded',tab)

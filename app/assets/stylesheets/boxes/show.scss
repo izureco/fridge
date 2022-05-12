@@ -45,8 +45,6 @@
   height: 100px;
 }
 
-/* /下部ボタン */
-
 /* タブ関係 */
 .tab-area {
   display: flex;
@@ -81,7 +79,142 @@
     display: block;
   }
 }
-/* レシピ関係 */
+
+.item-contents {
+  background-color: #FFF;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10vh 0;
+}
+
+.items-sell-main {
+  background-color: #FFF;
+  width: 70vw;
+  min-width: 450px;
+  padding: 10vh 15vw;
+}
+
+// ▼冷蔵庫&ユーザー情報
+.fridge-main {
+  height: 300px;
+  background-color: #00A0E9;
+  display: flex;
+  justify-content: space-around;
+  // flex-direction: column;
+  align-items: center;
+  padding: 0 20vw;
+  margin: 20px auto;
+}
+
+.fridge-img{
+  width: 30%;
+  height: 250px;
+  padding: 1vw;
+  background-color: #EEE;
+}
+
+.item-img-content-show {
+  position: relative;
+  // background-size: cover;
+}
+
+.item-img-content-show h3{
+  position: absolute;
+  color: #fff;
+  top: 0;
+  left: 0;
+  background: #2F70BE;
+  font-size: 16px;
+  line-height: 1;
+  padding: 0 10px;
+}
+
+.item-img-show{
+  width: 100%;
+  height: auto;
+}
+
+.item-img-show img{
+  max-width: 100%;
+  // aspect-ratio: 4/ 3;
+  height: auto;
+}
+
+.fridge-info{
+  width: 30%;
+  height: 250px;
+  // background-color: #FFF;
+  font-weight: bold;
+  background-color: #EEE;
+  padding: 1vw;
+}
+
+.fridge-info>.item-info {
+  background-color: #FFF;
+  color: black;
+  padding: 1vw;
+  margin: 5px;
+}
+
+.fridge-info>.item-info p{
+  margin-bottom: 5px;
+}
+
+.user-info{
+  width: 40%;
+  height: 250px;
+  padding: 1vw;
+  background-color: #EEE;
+}
+
+.user-info>.item-info {
+  background-color: #FFF;
+  color: black;
+  padding: 1vw;
+  margin: 5px;
+}
+
+.recipe-main{
+  width: 100vw;
+  height: 500px;
+  background-color: #2F70BE;
+  display: flex;
+  justify-content: space-between;
+}
+
+.recipe-main>.recipe-ul{
+  width: 100%;
+}
+
+.recipe-li-0, .recipe-li-1, .recipe-li-2, .recipe-li-3{
+  display: block;
+  width: 25%;
+  height: 90%;
+  background-color: #eee;
+  margin: 25px 5px ;
+  overflow: hidden;
+}
+
+#recipe-img{
+  width: 75%;
+  height: 75%;
+  padding: 1vw;
+  object-fit: cover;
+}
+
+#recipe-h1{
+  font-weight: 500;
+  color: #0099e8;
+  padding-left: 15px;
+  padding-top: 15px;
+}
+
+#recipe-p{
+  padding-left: 15px;
+}
+
+/* ▼▼レシピ関係 */
 
 #recipe_list{
   display: flex;
@@ -103,17 +236,38 @@
   font-size: 12px;
 }
 
-.item-contents {
-  background-color: #FFF;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 10vh 0;
+/* ▲▲レシピ関係 */
+
+/* ▼▼食材テーブル */
+.item-table-show{
+  border-collapse: collapse;
+  border-spacing: 0;
+  width: 100%;
+  margin-bottom: 50px;
 }
 
-.items-sell-main {
-  background-color: #FFF;
-  width: 70vw;
-  min-width: 450px;
-  padding: 10vh 15vw;
+.item-tr-show {
+  border-bottom: solid 1px #eee;
+  cursor: pointer;
+}
+
+.item-tr-show:hover{
+  background-color: #d4f0fd;
+}
+
+// .item-tr-show> th, .item-tr-show> td {
+//   border: solid 1px black;
+// }
+
+.item-tr-show> th{
+  font-size: 20px;
+  font-weight: 500;
+  // background-color: #CCCCCC;
+  padding: 0.5vw;
+  text-align: center;
+}
+
+.item-tr-show> td{
+  font-size: 24px;
+  padding: 1vw;
 }

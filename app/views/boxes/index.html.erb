@@ -74,7 +74,7 @@
     <ul class='item-lists'>
       <% @boxes.each do |box| %>
         <li class='list'>
-          <%= link_to box_path(box.id) do %>
+          <%= link_to box_path(box.id), data: {"turbolinks" => false } do %>
             <div class='item-img-content'>
               <%= image_tag box.image, class: "item-img" %>
               <h3 class='item-name'>

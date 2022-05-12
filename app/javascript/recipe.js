@@ -1,23 +1,60 @@
+// FIXME : 食材をクリックしたら、レシピ表示
 const rec = () => {
     // カテゴリ一覧API
     const all_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryList/20170426?applicationId=1092732536630240284';
+    const def_rank_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1092732536630240284'
 
-    const updateText = (data) => {
+    // やりたいこと : レシピを4つ表示
+    // 1) defaultでその日のレシピランキングを表示しておく
+    const createText = (data) => {
         for (let i = 0; i < data.length; i++) {
-            const insertHtml = `
-            <li>
+            const createHtml = `
+            <li class="recipe-li-${i}">
+                <h1 id="recipe-h1">${data[i].recipeTitle}</h1>
                 <a href="${data[i].recipeUrl}" target="_blank">
-                <img src="${data[i].foodImageUrl}" alt="${data[i].recipeTitle} 画像">
+                <img src="${data[i].foodImageUrl}" alt="${data[i].recipeTitle} 画像" id="recipe-img">
                 </a>
-                <h2>${data[i].recipeTitle}</h2>
-                <p>${data[i].recipeDescription}</p>
+                <p id="recipe-p">${data[i].recipeDescription}</p>
             </li>
-        `;
-        $('#recipe_list').append(insertHtml);
+            `;
+            $('#recipe_list').append(createHtml);
         }
     }
 
-    // API取得
+    // 2) タブがクリックされると、表示を上書きする。
+    const updateText = (data) => {
+        for (let i = 0; i < data.length; i++) {
+            const insertHtml = `
+                <h1 id="recipe-h1">${data[i].recipeTitle}</h1>
+                <a href="${data[i].recipeUrl}" target="_blank">
+                <img src="${data[i].foodImageUrl}" alt="${data[i].recipeTitle} 画像" id="recipe-img">
+                </a>
+                <p id="recipe-p">${data[i].recipeDescription}</p>
+            `;
+            switch(i) {
+                case 0:
+                    $('.recipe-li-0').html(insertHtml);
+                    break
+                case 1:
+                    $('.recipe-li-1').html(insertHtml);
+                    break
+                case 2:
+                    $('.recipe-li-2').html(insertHtml);
+                    break
+                case 3:
+                    $('.recipe-li-3').html(insertHtml);
+                    break
+            }
+        }
+    }
+
+    // ❶ defaultの表示(本日のランキング)用のJSON取得
+    $.getJSON(def_rank_url, (data) => {
+        const def_recipes = data.result;
+        createText(def_recipes)
+    })
+
+    // ❷ タブ毎の表示用のJSON取得
     $.getJSON(all_url, (data) => {
         const recipes = data.result;
         let recipe_arr = []
@@ -59,31 +96,118 @@ const rec = () => {
             recipe_arr.push(recipe_obj)
         })
 
-        const food_title = document.getElementById("food_title").value
-        let food_id = []
-        let category_name = 0
+    //  食材の値が格納された要素から、食材名を取得
+    //  tabがクリックされたら発火させる。
+    //  まずは"魚"
+        $("#tab-fish-show.tab").on("click",function(){
+            let food_title = document.getElementById("food_title_fish").value
+            let food_id = []
+            let category_name = 0
 
-        // 3) 取得した食材と、1)の配列の食材を比較し、合致したカテゴリIDを取得
-        $.each(recipe_arr, function(index, value){
-            category_name = value.categoryName
-            if( category_name.includes(food_title)) {
-                food_id.push(value.categoryId)
-            }
+            // 取得した食材と、1)の配列の食材を比較し、合致したカテゴリIDを取得
+            $.each(recipe_arr, function(index, value){
+                category_name = value.categoryName
+                if( category_name.includes(food_title)) {
+                    food_id.push(value.categoryId)
+                }
+            })
+
+            // 4) ランキング一覧APIのURLに該当するIdをドッキング
+            rank_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1092732536630240284' + '&categoryId=' + food_id[0]
+            $.getJSON(rank_url, (data) => {
+                const recipes = data.result;
+                updateText(recipes)
+            })
         })
 
-        // 4) ランキング一覧APIのURLに該当するIdをドッキング
-        // $.each(food_id, function(index, value){
-        rank_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1092732536630240284' + '&categoryId=' + food_id[0]
-        $.getJSON(rank_url, (data) => {
-            const recipes = data.result;
-            updateText(recipes)
+    //  "野菜"
+        $("#tab-veg-show.tab").on("click",function(){
+            let food_title = document.getElementById("food_title_veg").value
+
+            let food_id = []
+            let category_name = 0
+
+            $.each(recipe_arr, function(index, value){
+                category_name = value.categoryName
+                if( category_name.includes(food_title)) {
+                    food_id.push(value.categoryId)
+                }
+            })
+
+            // 4) ランキング一覧APIのURLに該当するIdをドッキング
+            // $.each(food_id, function(index, value){
+            rank_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1092732536630240284' + '&categoryId=' + food_id[0]
+            $.getJSON(rank_url, (data) => {
+                const recipes = data.result;
+                updateText(recipes)
+            })
         })
-        // })
+    //  "肉"
+        $("#tab-meat-show.tab").on("click",function(){
+            let food_title = document.getElementById("food_title_meat").value
 
-        // 5) ランキング一覧APIのURLに該当するIdをドッキング
+            let food_id = []
+            let category_name = 0
 
+            $.each(recipe_arr, function(index, value){
+                category_name = value.categoryName
+                if( category_name.includes(food_title)) {
+                    food_id.push(value.categoryId)
+                }
+            })
+
+            rank_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1092732536630240284' + '&categoryId=' + food_id[0]
+            $.getJSON(rank_url, (data) => {
+                const recipes = data.result;
+                updateText(recipes)
+            })
+        })
+
+    //  "飲料"
+        $("#tab-drink-show.tab").on("click",function(){
+            let food_title = document.getElementById("food_title_drink").value
+
+            let food_id = []
+            let category_name = 0
+
+            $.each(recipe_arr, function(index, value){
+                category_name = value.categoryName
+                if( category_name.includes(food_title)) {
+                    food_id.push(value.categoryId)
+                }
+            })
+
+            rank_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1092732536630240284' + '&categoryId=' + food_id[0]
+            $.getJSON(rank_url, (data) => {
+                const recipes = data.result;
+                updateText(recipes)
+            })
+        })
+
+        //  "アイス"
+        $("#tab-flozen-show.tab").on("click",function(){
+            let food_title = document.getElementById("food_title_flozen").value
+
+            let food_id = []
+            let category_name = 0
+
+            $.each(recipe_arr, function(index, value){
+                category_name = value.categoryName
+                if( category_name.includes(food_title)) {
+                    food_id.push(value.categoryId)
+                }
+            })
+
+            // 4) ランキング一覧APIのURLに該当するIdをドッキング
+            // $.each(food_id, function(index, value){
+            rank_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1092732536630240284' + '&categoryId=' + food_id[0]
+            $.getJSON(rank_url, (data) => {
+                const recipes = data.result;
+                updateText(recipes)
+            })
+        })
     });
 }
 
 // FIXME : boxの詳細が開かれたときだけ、作用するようにしたい
-window.addEventListener('load',rec)
+window.addEventListener('DOMContentLoaded',rec)

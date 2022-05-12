@@ -23,13 +23,10 @@ class BoxesController < ApplicationController
 
   def show
     @box = Box.find(params[:id])
+    @box_tag_list = BoxBoxtagRelation.where(params[:id])
+    @user = User.find(@box.user.id)
     @foods = @box.foods
   end
-
-  def category
-    binding.pry
-  end
-
 
   private
 

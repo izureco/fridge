@@ -26,6 +26,7 @@
     <%= form_with model: @form, url: box_foods_path, method: :post, local: true do |form| %>
       <%= render 'shared/foods_error_messages', model: @form %>
         <%# TODO : 1回ロードしないとタブ切り替えができない問題を解消する %>
+        <%# TODO : フォーム追加できるようにする。https://web-tsuku.life/add-form-appendchild/ %>
       <div class="content show">
         <%= render partial: 'shared/fields_for', locals:{ form: form } %>
       </div>
