@@ -5,7 +5,7 @@ const rec = () => {
     const def_rank_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1092732536630240284'
 
     // やりたいこと : レシピを4つ表示
-    // 1) defaultでその日のレシピランキングを表示しておく
+    // ❶ defaultでその日のレシピランキングを表示しておく
     const createText = (data) => {
         for (let i = 0; i < data.length; i++) {
             const createHtml = `
@@ -21,7 +21,7 @@ const rec = () => {
         }
     }
 
-    // 2) タブがクリックされると、表示を上書きする。
+    // ❷ タブがクリックされると、表示を上書きする。
     const updateText = (data) => {
         for (let i = 0; i < data.length; i++) {
             const insertHtml = `
@@ -206,6 +206,29 @@ const rec = () => {
                 updateText(recipes)
             })
         })
+
+        // 食材一覧の「任意の食材」がクリックされたとき、発火
+        $("#tab-fish-show.tab").on("click",function(){
+            let food_title = document.getElementById("food_title_fish").value
+            let food_id = []
+            let category_name = 0
+
+            // 取得した食材と、1)の配列の食材を比較し、合致したカテゴリIDを取得
+            $.each(recipe_arr, function(index, value){
+                category_name = value.categoryName
+                if( category_name.includes(food_title)) {
+                    food_id.push(value.categoryId)
+                }
+            })
+
+            // 4) ランキング一覧APIのURLに該当するIdをドッキング
+            rank_url = 'https://app.rakuten.co.jp/services/api/Recipe/CategoryRanking/20170426?applicationId=1092732536630240284' + '&categoryId=' + food_id[0]
+            $.getJSON(rank_url, (data) => {
+                const recipes = data.result;
+                updateText(recipes)
+            })
+        })
+
     });
 }
 
