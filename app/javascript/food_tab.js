@@ -15,12 +15,27 @@ const tab = () => {
   // 2) 
   $("#tab-fish.tab").on("click", function(){
     tab_id = $("#tab-fish.tab").data("value");
-    $("#send-data").val(tab_id)
+    $(".send-data-fish").val(tab_id)
   });
 
   $("#tab-veg.tab").on("click", function(){
     tab_id = $("#tab-veg.tab").data("value");
-    $("#send-data").val(tab_id)
+    $(".send-data-veg").val(tab_id)
+  });
+
+  $("#tab-meat.tab").on("click", function(){
+    tab_id = $("#tab-meat.tab").data("value");
+    $(".send-data-meat").val(tab_id)
+  });
+
+  $("#tab-drink.tab").on("click", function(){
+    tab_id = $("#tab-drink.tab").data("value");
+    $(".send-data-drink").val(tab_id)
+  });
+
+  $("#tab-flozen.tab").on("click", function(){
+    tab_id = $("#tab-flozen.tab").data("value");
+    $(".send-data-flozen").val(tab_id)
     debugger;
   });
 

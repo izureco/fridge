@@ -10,13 +10,13 @@
     <div class="tab" id="tab-veg" data-value='2' >
       <i class="fa-solid fa-carrot fa-2x"></i>Vegitable
     </div>
-    <div class="tab" data-value='3'>
+    <div class="tab" id="tab-meat" data-value='3'>
       <i class="fa-solid fa-cow fa-2x"></i>Meat
     </div>
-    <div class="tab" data-value='4'>
+    <div class="tab" id="tab-drink" data-value='4'>
       <i class="fa-solid fa-wine-bottle fa-2x"></i>Drink
     </div>
-    <div class="tab" data-value='5'>
+    <div class="tab" id="tab-flozen" data-value='5'>
       <i class="fa-solid fa-ice-cream fa-2x"></i>Flozen
     </div>
   </div>
@@ -25,26 +25,25 @@
   <div class="content-area">
     <%= form_with model: @form, url: box_foods_path, method: :post, local: true do |form| %>
       <%= render 'shared/foods_error_messages', model: @form %>
-        <%# TODO : 1回ロードしないとタブ切り替えができない問題を解消する %>
         <%# TODO : フォーム追加できるようにする。https://web-tsuku.life/add-form-appendchild/ %>
       <div class="content show">
-        <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+        <%= render partial: 'shared/fields_for', locals:{ form: form, i: 1 } %>
       </div>
 
       <div class="content">
-        <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+        <%= render partial: 'shared/fields_for', locals:{ form: form, i: 2 } %>
       </div>
 
       <div class="content">
-          <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+          <%= render partial: 'shared/fields_for', locals:{ form: form, i: 3 } %>
       </div>
 
       <div class="content">
-        <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+        <%= render partial: 'shared/fields_for', locals:{ form: form, i: 4 } %>
       </div>
 
       <div class="content">
-        <%= render partial: 'shared/fields_for', locals:{ form: form } %>
+        <%= render partial: 'shared/fields_for', locals:{ form: form, i: 5 } %>
       </div>
 
       <div class="sell-btn-contents">

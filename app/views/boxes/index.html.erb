@@ -2,44 +2,42 @@
 <% if user_signed_in? %>
 <div class='main'>
 
-  <%# 画面上部の「人生を変えるフリマアプリ」帯部分 %>
   <div class='title-contents'>
-    <h2 class='service-title'>
-      時間と食材のロスをなくす
-    </h2>
-    <p class='service-explain'>
-      FURiGEは「おとなり」の冷蔵庫が見られる
-    </p>
-    <p class='service-explain'>
-      新感覚のアプリケーションです
-    </p>
-    <div class='store-btn'>
-      <%= link_to image_tag("app-store.svg", class:"apple-btn"), "#" %>
-      <%= link_to image_tag("google-play.png", class:"google-btn"), "#" %>
+    <div class="title-box">
+      <h2 class='title'>MY冷蔵庫を登録</h2>
+      <p>冷蔵庫の食材を登録して、今日の献立のヒントにしよう!</p>
+      <div class="title-img-box">
+        <%= link_to image_tag("fridge-index-box1.png", class: "title-item-img"), new_box_path %>
+      </div>
+    </div>
+    <div class="title-box">
+      <h2 class='title'>食材を譲る</h2>
+      <p>冷蔵庫の食べなくなった食材を必要な人に譲ろう!</p>
+      <div class="title-img-box">
+        <%= link_to image_tag("fridge-index-box2.png", class: "title-item-img"), "#" %>
+      </div>
     </div>
   </div>
-  <%# /画面上部の「人生を変えるフリマアプリ」帯部分  %>
 
-  <%# FURIMAが選ばれる3つの理由部分 %>
-  <div class='select-reason-contents'>
+  <%# <div class='select-reason-contents'>
     <h2 class='title'>
       FRiGEの3つの特徴
     </h2>
     <ul class='reason-lists'>
       <li class='list'>
         <%= image_tag 'salespoint1.jpeg', class:"list-pict" %>
-        <span class='reason-list-number'>1</span>
+        <%# <span class='reason-list-number'>1</span>
         <h3 class='reason-list-text'>
           <span class='reason-list-blue-text'>簡単</span>
           にMy冷蔵庫登録
         </h3>
         <p class='reason-list-description'>
           スマホで冷蔵庫の食材をらくらく入力
-        </p>
-      </li>
+        </p> %>
+      <%# </li>
       <li class='list'>
         <%= image_tag "salespoint2.jpeg", class:"list-pict" %>
-        <span class='reason-list-number'>2</span>
+        <%# <span class='reason-list-number'>2</span>
         <h3 class='reason-list-text'>
           <span class='reason-list-blue-text'>時短</span>
           機能がいっぱい
@@ -47,25 +45,23 @@
         <p class='reason-list-description'>
           いろんなユーザーの冷蔵庫から買い出しのアイデアをいただこう!<br>
           今ある食材からレシピを提案してくれる!
-        </p>
-      </li>
-      <li class='list'>
-        <%= image_tag "salespoint3.jpeg", class:"list-pict" %>
-        <span class='reason-list-number'>3</span>
+        </p> %>
+      <%# </li>
+      <li class='list'> %>
+        <%# <%= image_tag "salespoint3.jpeg", class:"list-pict" %>
+        <%# <span class='reason-list-number'>3</span>
         <h3 class='reason-list-text'>
           不要な食べ物を
           <span class='reason-list-blue-text'>必要な人に</span>
         </h3>
-        <p class='reason-list-description'>
-          食べなくなった食材をお譲りできます!
+        <p class='reason-list-description'> %>
+          <%# 食べなくなった食材をお譲りできます!
         </p>
       </li>
     </ul>
-  </div>
-  <%# /FURIMAが選ばれる3つの理由部分 %>
+  </div> %>
 
-
-  <%# 商品一覧 %>
+  <%# 冷蔵庫一覧 %>
   <div class='item-contents'>
     <h2 class='title'>みんなのMY FRiDGE</h2>
     <div class="subtitle" >

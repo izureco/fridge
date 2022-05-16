@@ -20,7 +20,18 @@
         <td><%= f.date_field :purchase_date %></td>
         <td><%= f.date_field :expiry_date %></td>
         <td><%= f.text_field :price %></td>
-        <td><%= f.hidden_field :category_id, id:"send-data" %></td>
+        <% case i %>
+          <% when 1 then%>
+            <td><%= f.hidden_field :category_id, class:"send-data-fish" %></td>
+          <% when 2 then%>
+            <td><%= f.hidden_field :category_id, class:"send-data-veg" %></td>
+          <% when 3 then%>
+            <td><%= f.hidden_field :category_id, class:"send-data-meat" %></td>
+          <% when 4 then%>
+            <td><%= f.hidden_field :category_id, class:"send-data-drink" %></td>
+          <% when 5 then%>
+            <td><%= f.hidden_field :category_id, class:"send-data-flozen" %></td>
+        <% end %>
       </tr>
     <% end %>
   </tbody>
