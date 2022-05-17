@@ -68,8 +68,8 @@ https://docs.google.com/spreadsheets/d/1oEpJ1GJASJOFnGSHlHrVNZ2_ndCOklUk9rih8poR
 # テスト用アカウント
 - Basic認証パスワード : admin
 - basic認証ID : 1111
-- メールアドレス : ***
-- パスワード : ***
+- メールアドレス : a@sample.com
+- パスワード : 111111
 
 # 利用方法
 ## 冷蔵庫投稿
