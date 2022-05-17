@@ -5,14 +5,22 @@ class FoodsController < ApplicationController
   end
 
   def create
-    # data = params.require('category')
+    binding.pry
     @form = Form::FoodCollection.new(food_collection_params)
     if @form.save == true
       redirect_to root_path, notice: "商品を登録しました"
     else
-      # @form.saveに失敗した時点で,@form.errorsに何かしら入っている?
       render :new
     end
+  end
+
+  def edit
+  end
+
+  def update
+  end
+
+  def show
   end
 
   private

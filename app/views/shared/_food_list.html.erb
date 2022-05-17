@@ -1,0 +1,41 @@
+<table class="item-table-show">
+<thead>
+  <tr class="item-tr-show">
+    <th>食材</th>
+    <th>個数</th>
+    <th>買った日</th>
+    <th>消費期限</th>
+    <th>購入価格</th>
+  </tr>
+</thead>
+<tbody>
+
+<% foods.each do |food| %>
+  <% if food.category_id == i %>
+    <tr class="item-tr-show">
+      <% case i %>
+        <% when 1 then%>
+          <td><i class="fa-solid fa-fish"><%= food.food_title %></td>
+          <input type="hidden" id="food_title_fish" value="<%= food.food_title %>">
+        <% when 2 then%>
+          <td><i class="fa-solid fa-carrot"><%= food.food_title %></td>
+          <input type="hidden" id="food_title_veg" value="<%= food.food_title %>">
+        <% when 3 then%>
+          <td><i class="fa-solid fa-cow"><%= food.food_title %></td>
+          <input type="hidden" id="food_title_meat" value="<%= food.food_title %>">
+        <% when 4 then%>
+          <td><i class="fa-solid fa-wine-bottle"><%= food.food_title %></td>
+          <input type="hidden" id="food_title_drink" value="<%= food.food_title %>">
+        <% when 5 then%>
+          <td><i class="fa-solid fa-ice-cream"><%= food.food_title %></td>
+          <input type="hidden" id="food_title_flozen" value="<%= food.food_title %>">
+        <% end %>
+      <td><%= food.number_title  %></td>
+      <td><%= food.purchase_date  %></td>
+      <td><%= food.expiry_date  %></td>
+      <td><%= food.price  %></td>
+    </tr>
+  <% end %>
+<% end %>
+</tbody>
+</table>

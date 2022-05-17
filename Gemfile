@@ -71,3 +71,7 @@ gem 'active_hash'
 gem 'acts-as-taggable-on', '~> 6.0'
 
 gem 'rails-i18n'
+
+# jquery関連
+gem 'jquery-rails'
+gem 'jquery-turbolinks'

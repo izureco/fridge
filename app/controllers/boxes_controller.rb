@@ -21,6 +21,13 @@ class BoxesController < ApplicationController
     end
   end
 
+  def show
+    @box = Box.find(params[:id])
+    @box_tag_list = BoxBoxtagRelation.where(params[:id])
+    @user = User.find(@box.user.id)
+    @foods = @box.foods
+  end
+
   private
 
   def box_form_params
