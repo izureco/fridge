@@ -75,3 +75,10 @@ gem 'rails-i18n'
 # jquery関連
 gem 'jquery-rails'
 gem 'jquery-turbolinks'
+
+# ページネーション
+gem 'kaminari'
+
+# ページネーションのview変更
+gem 'bootstrap4-kaminari-views'
+gem 'bootstrap5-kaminari-views', '~> 0.0.1'

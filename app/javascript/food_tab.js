@@ -1,4 +1,3 @@
-// FIXME : 1回ロードしないとタブが切り替わらない
 const tab = () => {
 // $(function() {
   let tabs = $(".tab"); // tabのクラスを全て取得し、変数tabsに配列で定義

@@ -98,6 +98,11 @@
   </div>
   <%# /商品一覧 %>
 </div>
+
+<div class="foot-pagination">
+  <%= paginate @boxes, theme: 'bootstrap-5' %>
+</div>
+
 <%= render "shared/footer" %>
 
 <% else %>

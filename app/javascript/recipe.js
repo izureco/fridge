@@ -10,11 +10,11 @@ const rec = () => {
         for (let i = 0; i < data.length; i++) {
             const createHtml = `
             <li class="recipe-li-${i}">
-                <h1 id="recipe-h1">${data[i].recipeTitle}</h1>
+                <p id="recipe-title"><big>${data[i].recipeTitle}</big></p>
                 <a href="${data[i].recipeUrl}" target="_blank">
                 <img src="${data[i].foodImageUrl}" alt="${data[i].recipeTitle} 画像" id="recipe-img">
                 </a>
-                <p id="recipe-p">${data[i].recipeDescription}</p>
+                <p id="recipe-description">${data[i].recipeDescription}</p>
             </li>
             `;
             $('#recipe_list').append(createHtml);
@@ -25,7 +25,7 @@ const rec = () => {
     const updateText = (data) => {
         for (let i = 0; i < data.length; i++) {
             const insertHtml = `
-                <h1 id="recipe-h1">${data[i].recipeTitle}</h1>
+                <p id="recipe-h1">${data[i].recipeTitle}</p>
                 <a href="${data[i].recipeUrl}" target="_blank">
                 <img src="${data[i].foodImageUrl}" alt="${data[i].recipeTitle} 画像" id="recipe-img">
                 </a>
@@ -232,5 +232,5 @@ const rec = () => {
     });
 }
 
-// FIXME : boxの詳細が開かれたときだけ、作用するようにしたい
+// TODO : boxの詳細が開かれたときだけ、作用するようにしたい
 window.addEventListener('DOMContentLoaded',rec)

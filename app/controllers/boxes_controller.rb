@@ -1,6 +1,7 @@
 class BoxesController < ApplicationController
   def index
-    @boxes = Box.includes(:user).order("created_at DESC")
+    # paginationのために、page(params[:page])を追加
+    @boxes = Box.includes(:user).order("created_at DESC").page(params[:page])
     @box_tag_list = BoxBoxtagRelation.all
   end
 
