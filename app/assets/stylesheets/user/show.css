@@ -28,6 +28,7 @@
   height: 45%;
   background-color: #FFF;
   padding: 1vw;
+  margin-bottom: 5px;
 }
 
 .user-name>.subtitle {
@@ -38,16 +39,16 @@
   font-weight: bold;
 }
 
-.user-edit{
-  height: 25%;
-}
-
 .user-edit-btn{
+  width: 50%;
   background: #aaa;
   border: 1px solid #aaa;
   color: #fff;
-  padding: 15px 35%;
+  padding: 1vw;
   text-decoration: none;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
 }
 
 /* 冷蔵庫エリア */

@@ -14,9 +14,7 @@
       <%= @user.appetite.name %><br>
     </div>
 
-    <div class="user-edit">
-      <%= link_to '編集', "#", class: "user-edit-btn" %>
-    </div>
+    <%= link_to '編集', edit_user_registration_path, class: "user-edit-btn" %>
   </div>
 
   <div class='box-contents'>
