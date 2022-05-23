@@ -1,5 +1,5 @@
 class Form::FoodCollection < Form::Base
-  FORM_COUNT = 3
+  FORM_COUNT = 5
     #ここで、作成したい登録フォームの数を指定
   attr_accessor(
     :foods,
@@ -52,7 +52,6 @@ class Form::FoodCollection < Form::Base
   def save
     is_success = true
     ava_count = 0
-    # FIXME : category_IDが入っていないのに、saveできてしまっている
     Food.transaction do
       self.foods.each do |food|
         food.valid?

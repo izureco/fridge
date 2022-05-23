@@ -47,30 +47,38 @@
 
 /* タブ関係 */
 .tab-area {
+  width: 60vw;
   display: flex;
   justify-content: space-around;
-  background-color: #222e3e;
+  // background-color: #222e3e;
   cursor: pointer;
-  margin-top: 30px;
+  // margin-top: 30px;
+  border-radius: 10px;
   .tab {
-    width: 200px;
-    height: 60px;
+    font-size: 1.5rem;
+    width: 20%;
+    height: 50%;
     line-height: 30px;
     text-align: center;
-    padding: 10px 0;
+    padding: 1vw;
     color: white;
     border-right: 1px solid #50637b;
     border-left: 1px solid #222e3e;
+    background-color: #222e3e;
   }
   // activeクラス : 色を変えることで、選択されていることを表す
   .tab.active {
+    padding: 1vw;
     background-color: #ccc;
     color: #222e3e;
     border: none;
+    border-radius: 10px;
+    margin: 0 5px;
   }
 }
 
 .content-area {
+  width: 65vw;
   font-size: 30px;
   text-align: center;
   // contentクラス : display: noneなので、基本的に非表示

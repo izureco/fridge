@@ -12,6 +12,7 @@ const tab = () => {
   // どのタブが選択されたか判断
   // 1) そのときのfood.titleのvalueを取得
   // 2) 
+  // FIXME: デフォルトで何も開かれてない状態にする(現状、魚のタブがクリックされてない=idが付与されてないから)
   $("#tab-fish.tab").on("click", function(){
     tab_id = $("#tab-fish.tab").data("value");
     $(".send-data-fish").val(tab_id)

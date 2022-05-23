@@ -1,0 +1,59 @@
+/* ユーザー情報エリア */
+.user-main {
+  height: 350px;
+  width: 100%;
+  background-color: #00A0E9;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  /* padding: 0 20vw;
+  margin: 10px auto; */
+}
+
+.user-main-info{
+  width: 40%;
+  height: 80%;
+  padding: 1vw;
+  background-color: #EEE;
+}
+
+.user-name{
+  height: 30%;
+  background-color: #FFF;
+  margin-bottom: 5px;
+  padding:1vw;
+}
+
+.user-personal{
+  height: 45%;
+  background-color: #FFF;
+  padding: 1vw;
+}
+
+.user-name>.subtitle {
+  font-size: 3vh;
+  margin: 1vh 0;
+  text-decoration: none;
+  color: #00A0E9;
+  font-weight: bold;
+}
+
+.user-edit{
+  height: 25%;
+}
+
+.user-edit-btn{
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  padding: 15px 35%;
+  text-decoration: none;
+}
+
+/* 冷蔵庫エリア */
+.box-contents{
+  width: 40%;
+  height: 80%;
+  background-color: #FFF;
+  /* padding: 10vh 0; */
+}

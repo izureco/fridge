@@ -1,10 +1,10 @@
 <%= render "shared/header" %>
 
 <div class="item-contents">
-  <h2 class="items-sell-title">食材 <i class="fa-solid fa-box-archive"></i> を登録しよう</h2>
-  <h3>登録する食材のカテゴリを選ぼう!</h3>
+  <h2 class="items-sell-title">冷蔵庫に食材 <i class="fa-solid fa-box-archive"></i> を登録しよう</h2>
+  <h3>STEP1 : 登録する食材のカテゴリを選ぼう!</h3>
   <div class="tab-area">
-    <div class="tab active" id="tab-fish" data-value='1' >
+    <div class="tab" id="tab-fish" data-value='1' >
       <i class="fa-solid fa-fish fa-2x"></i>Fish
     </div>
     <div class="tab" id="tab-veg" data-value='2' >
@@ -21,12 +21,11 @@
     </div>
   </div>
   
-  <%# <div class="items-sell-main"> %>
   <div class="content-area">
     <%= form_with model: @form, url: box_foods_path, method: :post, local: true do |form| %>
       <%= render 'shared/foods_error_messages', model: @form %>
         <%# TODO : フォーム追加できるようにする。https://web-tsuku.life/add-form-appendchild/ %>
-      <div class="content show">
+      <div class="content">
         <%= render partial: 'shared/fields_for', locals:{ form: form, i: 1 } %>
       </div>
 

@@ -1,4 +1,4 @@
-<h2>選択されている食材カテゴリ : <i class="fa-solid fa-fish"></i>Fish </h2>
+<h3>STEP2 : 登録する食材の情報を入力しよう!</h3>
 <table class="item-table">
   <thead>
     <tr class="item-tr">
@@ -14,12 +14,12 @@
   <tbody>
     <%= form.fields_for :foods do |f| %>
       <tr class="item-tr">
-        <td><%= f.check_box :availability, {}, "true", "false" %></td>
-        <td><%= f.text_field :food_title %></td>
+        <td><%= f.check_box :availability %></td>
+        <td><%= f.text_field :food_title, class:"td-food" %></td>
         <td><%= f.number_field :number_title, min: 1, max: 99 %></td>
-        <td><%= f.date_field :purchase_date %></td>
-        <td><%= f.date_field :expiry_date %></td>
-        <td><%= f.text_field :price %></td>
+        <td><%= f.date_field :purchase_date, class:"td-date"%></td>
+        <td><%= f.date_field :expiry_date, class:"td-date" %></td>
+        <td><%= f.text_field :price, class:"td-price" %></td>
         <% case i %>
           <% when 1 then%>
             <td><%= f.hidden_field :category_id, class:"send-data-fish" %></td>
@@ -32,6 +32,8 @@
           <% when 5 then%>
             <td><%= f.hidden_field :category_id, class:"send-data-flozen" %></td>
         <% end %>
+        <td><input type="button" value="+" class="add-btn"></td>
+        <td><input type="button" value="-" class="del-btn"></td>
       </tr>
     <% end %>
   </tbody>

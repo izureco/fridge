@@ -1,6 +1,25 @@
 <%= render "shared/header" %>
 
-  <div class='item-contents'>
+<div class='user-main'>
+  <div class="user-main-info">
+    <div class="user-name">
+      <p><i class="fa-solid fa-pen"></i> USER NAME</p>
+      <div class="subtitle" ><%= @user.nickname %></div>
+    </div>
+    <%# ActiveHashのnameカラムを表示させる %>
+    <div class="user-personal">
+      <p><i class="fa-solid fa-pen"></i> USER TYPE</p>
+      <%= @user.family_type.name %><br>
+      <%= @user.eatout_freq.name %><br>
+      <%= @user.appetite.name %><br>
+    </div>
+
+    <div class="user-edit">
+      <%= link_to '編集', "#", class: "user-edit-btn" %>
+    </div>
+  </div>
+
+  <div class='box-contents'>
     <div class="subtitle" ><%= @user.nickname %>さんのMY FRiDGE
     </div>
     <ul class='item-lists'>
@@ -32,5 +51,6 @@
       <% end %>
     </ul>
   </div>
+</div>
 
 <%= render "shared/footer" %>
