@@ -1,24 +1,71 @@
 <%= render "shared/header" %>
 
 <div class='user-main'>
-  <div class="user-main-info">
-    <div class="user-name">
-      <p><i class="fa-solid fa-pen"></i> USER NAME</p>
-      <div class="subtitle" ><%= @user.nickname %></div>
-    </div>
-    <%# ActiveHashのnameカラムを表示させる %>
-    <div class="user-personal">
-      <p><i class="fa-solid fa-pen"></i> USER TYPE</p>
-      <%= @user.family_type.name %><br>
-      <%= @user.eatout_freq.name %><br>
-      <%= @user.appetite.name %><br>
+  <div class="user-info-wrap">
+    <div class='user-header-info'>
+      <h2 class='user-header-text'>
+        <%= @user.nickname %>さんの登録情報
+      </h2>
     </div>
 
+    <%= render 'shared/error_messages', model: @user %>
+
+    <div class="user-middle-info">
+      <p class='user-middle-text'>
+        ユーザー情報
+      </p>
+    </div>
+
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">ニックネーム</label>
+      </div>
+      <%= @user.nickname %>
+    </div>
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">メールアドレス</label>
+      </div>
+      <%= @user.email %>
+    </div>
+    <div class="user-middle-info">
+      <p class='user-middle-text'>
+        パーソナリティ情報
+      </p>
+    </div>
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">家族構成</label>
+      </div>
+      <div class='input-name-wrap'>
+          <%= @user.family_type.name %>
+      </div>
+    </div>
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">外食の頻度</label>
+      </div>
+      <div class='input-name-wrap'>
+          <%= @user.eatout_freq.name %>
+      </div>
+    </div>
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">一般的な食欲</label>
+      </div>
+      <div class='input-name-wrap'>
+          <%= @user.appetite.name %>
+      </div>
+    </div>
     <%= link_to '編集', edit_user_registration_path, class: "user-edit-btn" %>
   </div>
+  <%# ユーザー情報以上 %>
 
-  <div class='box-contents'>
-    <div class="subtitle" ><%= @user.nickname %>さんのMY FRiDGE
+  <div class='user-box-wrap'>
+    <div class='user-header-info'>
+      <h2 class='user-header-text'>
+        <%= @user.nickname %>さんのMY FRiDGE
+      </h2>
     </div>
     <ul class='item-lists'>
       <% @boxes.each do |box| %>
