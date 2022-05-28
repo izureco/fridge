@@ -1,7 +1,6 @@
 /* ユーザー情報エリア */
 .user-main {
-  width: 100%;
-  min-width: 800px;
+  width: 100vw;
   height: 100%;
   background-color: #00A0E9;
   display: flex;
@@ -10,7 +9,7 @@
 
 .user-info-wrap{
   width: 30%;
-  height: 100%;
+  /* height: 100%; */
   background-color: #EEEEEE;
   margin: 1vw;
   border-radius: 5px;
@@ -28,6 +27,7 @@
 .user-header-text{
   /* line-height: 100px; */
   /* border-bottom: 1px solid #f5f5f5; */
+  font-size: 2.5vw;
   font-weight: bold;
 }
 
@@ -60,21 +60,11 @@
   font-weight: bold;
 }
 
-.user-personal{
-  height: 45%;
-  background-color: #FFF;
-  padding: 1vw;
-  margin-bottom: 5px;
+.item-img{
+  max-width: 100%;
+  width: 100%;
+  height: 100%;
 }
-
-.user-name>.subtitle {
-  font-size: 3vh;
-  margin: 1vh 0;
-  text-decoration: none;
-  color: #00A0E9;
-  font-weight: bold;
-}
-
 .user-edit-btn{
   width: 80%;
   background: #aaa;
@@ -94,4 +84,18 @@
   background-color: #EEEEEE;
   margin: 1vw;
   border-radius: 5px;
+}
+
+.user-box-wrap>.title-box{
+  margin: 10px auto;
+}
+
+.user-box-wrap>.item-lists{
+  margin: 20px 0;
+  width: 100%;
+}
+
+.user-box-wrap>.item-lists>.list{
+  width: 30%;
+  margin: 10px;
 }

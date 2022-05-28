@@ -5,11 +5,8 @@ Rails.application.routes.draw do
   }
 
   root to: 'boxes#index'
-  resources :boxes, only: [:index, :new, :create, :show] do
-    resources :foods, only: [:new, :create, :edit, :update, :show]
-    # collection do
-    #   get 'category'
-    # end
+  resources :boxes, only: [:index, :new, :create, :show, :edit, :update] do
+    resources :foods, only: [:new, :create,]
   end
   
   resources :users, only: [:show]

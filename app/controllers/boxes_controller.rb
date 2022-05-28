@@ -29,6 +29,15 @@ class BoxesController < ApplicationController
     @foods = @box.foods
   end
 
+  def edit
+    @box = Box.find(params[:id])
+    @user = User.find(@box.user.id)
+    @form = Form::FoodCollection.new(box_id: @box)
+  end
+
+  def update
+  end
+
   private
 
   def box_form_params

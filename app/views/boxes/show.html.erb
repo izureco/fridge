@@ -1,52 +1,81 @@
 <%= render "shared/header" %>
 
   <div class='fridge-main'>
-    <div class="fridge-img">
-      <div class='item-img-content-show'>
-        <%= image_tag @box.image, class: "item-img-show" %>
-        <h3 class='item-name'>
-          <i class="fa-solid fa-box-archive"></i><%=  @box.box_title %>
-        </h3>
+    <%# 冷蔵庫エリア %>
+    <div class='fridge-wrap'>
+      <div class='fridge-header-info'>
+        <p class='fridge-header-text'>
+          <%= @user.nickname %>さんのMY FRiDGE
+        </p>
       </div>
-    </div>
-    <div class="fridge-info">
-      <div class="item-info">
-        <p><i class="fa-solid fa-pen"></i> DESCRIPTION</p>
-        <%= @box.description %>
-      </div>
-      <%# タグ表示 %>
-      <div class='item-info'>
-        <p><i class="fa-solid fa-tags"></i> TAGS</p>
-        <% count = 0%>
-        <% @box_tag_list.each do |relation| %>
-          <% if @box.id == relation.box_id %>
-            <div class='item-tag'>
-              <%= relation.boxtag.tag_name %>
-              <% count = count + 1 %>
+      <%# 冷蔵庫が1つでも登録されていたら、冷蔵庫を表示 %>
+      <div class="fridge-nav">
+        <div class='item-img-content-show'>
+          <%= image_tag @box.image, class: "box-item-img" %>
+          <h3 class='item-name'>
+            <%= @box.box_title %>
+          </h3>
+        </div>
+        <div class='fridge-info'>
+          <div class='user-group'>
+            <div class='user-text-wrap'>
+              <label class="user-text">冷蔵庫の紹介</label>
             </div>
-          <% end %>
-        <% end %>
-        <% if count == 0 %>
-          <div class='item-tag'>未登録</div>
-        <% end %>
-      </div>
-    </div>
-    <div class="user-info">
-      <div class="item-info">
-        <p><i class="fa-solid fa-pen"></i> USER NAME</p>
-        <%= @box.user.nickname %>
-      </div>
-      <%# ActiveHashのnameカラムを表示させる %>
-      <div class="item-info">
-        <p><i class="fa-solid fa-pen"></i> USER TYPE</p>
-        <%= @user.family_type.name %><br>
-        <%= @user.eatout_freq.name %><br>
-        <%= @user.appetite.name %><br>
+            <div class='input-name-wrap'>
+                <%= @box.description %>
+            </div>
+          </div>
+          <div class="item-info">
+            <% count = 0%>
+            <% @box_tag_list.each do |relation| %>
+              <% if @box.id == relation.box_id %>
+                <div class='item-tag'>
+                  <%= relation.boxtag.tag_name %>
+                  <% count = count + 1 %>
+                </div>
+              <% end %>
+            <% end %>
+            <% if count == 0 %>
+              <div class='item-tag'>未登録</div>
+            <% end %>
+          </div>
+        </div>
       </div>
     </div>
 
+    <%# パーソナリティ情報 %>
+    <div class="user-info-wrap">
+      <div class="user-middle-info">
+        <p class='user-middle-text'>
+          パーソナリティ情報
+        </p>
+      </div>
+      <div class="user-group">
+        <div class='user-text-wrap'>
+          <label class="user-text">家族構成</label>
+        </div>
+        <div class='input-name-wrap'>
+            <%= @user.family_type.name %>
+        </div>
+      </div>
+      <div class="user-group">
+        <div class='user-text-wrap'>
+          <label class="user-text">外食の頻度</label>
+        </div>
+        <div class='input-name-wrap'>
+            <%= @user.eatout_freq.name %>
+        </div>
+      </div>
+      <div class="user-group">
+        <div class='user-text-wrap'>
+          <label class="user-text">一般的な食欲</label>
+        </div>
+        <div class='input-name-wrap'>
+            <%= @user.appetite.name %>
+        </div>
+      </div>
+    </div>
   </div>
-
 
   <div class='item-contents'>
     <% if @foods.present? %>
