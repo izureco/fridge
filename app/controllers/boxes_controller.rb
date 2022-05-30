@@ -32,7 +32,7 @@ class BoxesController < ApplicationController
   def edit
     @box = Box.find(params[:id])
     @user = User.find(@box.user.id)
-    @form = Form::FoodCollection.new(box_id: @box)
+    @form = Form::FoodCollection.new(foods: @box.foods)
   end
 
   def update

@@ -17,7 +17,6 @@ class Form::FoodCollection < Form::Base
   end
 
   # 初期化メソッド
-
   def initialize(attributes = {})
     super attributes
     self.foods = FORM_COUNT.times.map { Food.new() } unless self.foods.present?
