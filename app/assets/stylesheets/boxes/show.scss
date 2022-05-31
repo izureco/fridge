@@ -21,28 +21,27 @@
 }
 
 .sell-btn {
-  background: #0099e8;
-  border: 1px solid #0099e8;
-  color: #fff;
-  margin-bottom: 4vh;
-}
-
-.back-btn {
+  width: 100%;
   background: #aaa;
   border: 1px solid #aaa;
   color: #fff;
-  // padding: 15px 35%;
+  padding: 1vw;
   text-decoration: none;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
 }
 
-.sell-btn1 {
-  width: 200px;
-  height: 100px;
-}
-
-.back-btn1 {
-  width: 200px;
-  height: 100px;
+.back-btn-show {
+  width: 80%;
+  background: #aaa;
+  border: 1px solid #aaa;
+  color: #fff;
+  padding: 1vw;
+  text-decoration: none;
+  display: block;
+  margin: 10px auto;
+  text-align: center;
 }
 
 /* タブ関係 */

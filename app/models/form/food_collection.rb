@@ -20,6 +20,7 @@ class Form::FoodCollection < Form::Base
   def initialize(attributes = {})
     super attributes
     self.foods = FORM_COUNT.times.map { Food.new() } unless self.foods.present?
+    binding.pry
   end
 
   # def initialize(box_id, attributes = )
@@ -45,6 +46,9 @@ class Form::FoodCollection < Form::Base
   # end
 
   def foods_attributes=(attributes)
+    # map : attributesの配列1つ1つに対応するFoodのインスタンスを生成してくれる
+    # hashにmapを適応させるときは、map{|key, hash| 実行する処理}という書き方をする。
+    # {|_, v|}の意味 : attributesはハッシュ形式なので、本来であれば▲と書くけど、key部分は使用しないので、_という変数にしている。
     self.foods = attributes.map { |_, v| Food.new(v) }
   end
 
