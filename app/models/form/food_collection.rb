@@ -16,24 +16,40 @@ class Form::FoodCollection < Form::Base
     validates :price
   end
 
+  delegate :persisted?, to: :
+
   # 初期化メソッド
+  # 引数として, attributesはハッシュが格納される。
+  # もし引数が無いとき(.newだけ)は、attributesに空のハッシュが格納される。
   def initialize(attributes = {})
+    # super : 親クラスのassign_attributesメソッドを呼び出す
+    # assing_attributes : 特定のattributesを変更するメソッド。DBへの保存は行わない。保存するなら、saveかupdate!
     super attributes
+    # <new/createアクションのとき>
+    ## もしfoodsが空なら、フォームとして5つのインスタンスを作成する。
+
+    # <edit/updateアクションのとき>
+    ## foodsが存在するなら、フォームにFood.new(attributes)すれば入るかな?
     self.foods = FORM_COUNT.times.map { Food.new() } unless self.foods.present?
     binding.pry
   end
 
-  # def initialize(box_id, attributes = )
+  # def initialize(attributes = {})
   #   if attributes.present?
-  #     self.foods = attributes.map do |value|
+  #     # self.foods = attributes.map do |value|
+  #     # editアクションが選択されたとき、1つのレコードを保存することはできた
+  #     # TODO:レコードの複数保存、それをviewに表示、edit/updateアクションを施す
+  #     binding.pry
+  #     self.foods = attributes.map do |v|
   #       Food.new(
-  #         food_title: value["food_title"],
-  #         number_title: value["number_title"],
-  #         purchase_date: value["purchase_date"],
-  #         expiry_date: value["expiry_date"],
-  #         price: value["price"],
-  #         give_id: value["give_id"],
-  #         box_id: value["box_id"]
+  #         # availability: value["availability"],
+  #         food_title: v[:foods][0]["food_title"],
+  #         number_title: v[:foods][0]["number_title"],
+  #         purchase_date: v[:foods][0]["purchase_date"],
+  #         expiry_date: v[:foods][0]["expiry_date"],
+  #         price: v[:foods][0]["price"],
+  #         give_id: v[:foods][0]["give_id"],
+  #         box_id: v[:foods][0]["box_id"]
   #       )
   #     end
   #   else
@@ -41,10 +57,8 @@ class Form::FoodCollection < Form::Base
   #   end
   # end
 
-  # def persisted?
-  #   false
-  # end
-
+  # fields_forを使用するために必要
+  # fields_forの第一引数として用いる
   def foods_attributes=(attributes)
     # map : attributesの配列1つ1つに対応するFoodのインスタンスを生成してくれる
     # hashにmapを適応させるときは、map{|key, hash| 実行する処理}という書き方をする。
@@ -78,6 +92,7 @@ class Form::FoodCollection < Form::Base
     ensure
       return is_success
   end
+
     # errors = []
     # # Foodクラスの中でどれか1つでも例外が発生すると、ロールバックしてくれる。登録するかしないかのどちらか。
     # Food.transaction do

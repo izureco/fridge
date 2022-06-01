@@ -12,6 +12,8 @@
   </thead>
   <%# TODO : フォーム追加できるようにする。https://web-tsuku.life/add-form-appendchild/ %>
   <tbody>
+    <%# fields_for : 異なるモデル(子モデル)を編集できるようになる %>
+    <%# 今回の場合は、Box > Foodなので、Foodモデルを編集 %>
     <%= form.fields_for :foods do |f| %>
       <tr class="item-tr">
         <td><%= f.check_box :availability %></td>
