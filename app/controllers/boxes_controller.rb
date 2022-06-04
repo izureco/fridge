@@ -28,12 +28,28 @@ class BoxesController < ApplicationController
   end
 
   def edit
+    # @box : 編集対象のbox_idのfoodsをインスタンスに格納
+    # @box.foodsに食材一覧が入っている
+    # edit.html.erbでは、@box.foods + 追加用の空欄フォームを表示すればよい。
     @box = Box.find(params[:id])
     @user = User.find(@box.user.id)
     @form = Form::FoodCollection.new(foods: @box.foods)
+    binding.pry
   end
 
   def update
+    # @box : 編集対象のbox_idのfoodsをインスタンスに格納
+    # @box.foodsに食材一覧が入っている
+    # フォーム入力された値は、@formに入っている
+    # @box.foodsの内容を、@formにupdateする
+    @box = Box.find(params[:id])
+    @user = User.find(@box.user.id)
+    @form = Form::FoodCollection.new(update_params)
+    if @form.update(@box) == true
+      redirect_to root_path, notice: "商品を登録しました"
+    else
+      render :edit
+    end
   end
 
   private
@@ -47,5 +63,13 @@ class BoxesController < ApplicationController
     ).merge(
       user_id: current_user.id
     )
+  end
+
+  def update_params
+    params.require(:form_food_collection)
+    .permit(foods_attributes: [:id, :availability, :food_title, :number_title, :purchase_date, :expiry_date, :price, :give_id, :category_id])
+    .merge(
+    box_id: params[:box_id]
+  )
   end
 end

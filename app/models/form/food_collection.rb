@@ -3,7 +3,7 @@ class Form::FoodCollection < Form::Base
     #ここで、作成したい登録フォームの数を指定
   attr_accessor(
     :foods,
-    :availability, :food_title, :number_title, :purchase_date, :expiry_date, :price, :give_id, :category_id,
+    :id, :availability, :food_title, :number_title, :purchase_date, :expiry_date, :price, :give_id, :category_id,
     :box_id
   )
     # foodsに作成したモデルが格納される
@@ -16,46 +16,81 @@ class Form::FoodCollection < Form::Base
     validates :price
   end
 
-  delegate :persisted?, to: :
-
   # 初期化メソッド
   # 引数として, attributesはハッシュが格納される。
   # もし引数が無いとき(.newだけ)は、attributesに空のハッシュが格納される。
-  def initialize(attributes = {})
-    # super : 親クラスのassign_attributesメソッドを呼び出す
-    # assing_attributes : 特定のattributesを変更するメソッド。DBへの保存は行わない。保存するなら、saveかupdate!
-    super attributes
-    # <new/createアクションのとき>
-    ## もしfoodsが空なら、フォームとして5つのインスタンスを作成する。
-
-    # <edit/updateアクションのとき>
-    ## foodsが存在するなら、フォームにFood.new(attributes)すれば入るかな?
-    self.foods = FORM_COUNT.times.map { Food.new() } unless self.foods.present?
-    binding.pry
-  end
-
   # def initialize(attributes = {})
-  #   if attributes.present?
-  #     # self.foods = attributes.map do |value|
-  #     # editアクションが選択されたとき、1つのレコードを保存することはできた
-  #     # TODO:レコードの複数保存、それをviewに表示、edit/updateアクションを施す
-  #     binding.pry
-  #     self.foods = attributes.map do |v|
-  #       Food.new(
-  #         # availability: value["availability"],
-  #         food_title: v[:foods][0]["food_title"],
-  #         number_title: v[:foods][0]["number_title"],
-  #         purchase_date: v[:foods][0]["purchase_date"],
-  #         expiry_date: v[:foods][0]["expiry_date"],
-  #         price: v[:foods][0]["price"],
-  #         give_id: v[:foods][0]["give_id"],
-  #         box_id: v[:foods][0]["box_id"]
-  #       )
-  #     end
-  #   else
-  #     self.foods = FORM_COUNT.times.map { Food.new }
-  #   end
+  #   # super : 親クラスのassign_attributesメソッドを呼び出す
+  #   # assing_attributes : 特定のattributesを変更するメソッド。DBへの保存は行わない。保存するなら、saveかupdate!
+  #   super attributes
+  #   # <new/createアクションのとき>
+  #   ## もしfoodsが空なら、フォームとして5つのインスタンスを作成する。
+
+  #   # <edit/updateアクションのとき>
+  #   ## foodsが存在するなら、フォームにFood.new(attributes)すれば入るかな?
+  #   self.foods = FORM_COUNT.times.map { Food.new() } unless self.foods.present?
   # end
+
+  def initialize(attributes = {})
+    # editのとき
+    if attributes.present?
+      # self.foods = attributes.map do |value|
+      # editアクションが選択されたとき、1つのレコードを保存することはできた
+      # TODO:category IDに応じて、登録済食材を表示させる
+      # 実装手順
+      # 1) FORM_COUNT×タブの分だけ、空のフォームを生成する
+      # 2) 1)を一つずつ参照し、@formを代入していく。
+      # 
+      # 3) そのとき、category_idによって、インスタンスの作成箇所を変える。
+      i = 0
+      count = 1
+      self.foods = FORM_COUNT.times.map { Food.new }
+      case count
+        # fields_for1回目(タブがfish)
+        when 1 then
+          FORM_COUNT.times do
+            if attributes[:foods][i].present? && attributes[:foods][i]["category_id"] == 1
+              self.foods[i] =
+                Food.new(
+                  # availability: value["availability"],
+                  food_title: attributes[:foods][i]["food_title"],
+                  number_title: attributes[:foods][i]["number_title"],
+                  purchase_date: attributes[:foods][i]["purchase_date"],
+                  expiry_date: attributes[:foods][i]["expiry_date"],
+                  price: attributes[:foods][i]["price"],
+                  category_id: attributes[:foods][i]["category_id"],
+                  give_id: attributes[:foods][i]["give_id"],
+                  box_id: attributes[:foods][i]["box_id"]
+                )
+            end
+            i += 1
+          end
+        # fields_for2回目(タブがVegitable)
+        when 2 then
+          FORM_COUNT.times do
+            if attributes[:foods][i].present? && attributes[:foods][i]["category_id"] == 2
+              self.foods[i] =
+                Food.new(
+                  # availability: value["availability"],
+                  food_title: attributes[:foods][i]["food_title"],
+                  number_title: attributes[:foods][i]["number_title"],
+                  purchase_date: attributes[:foods][i]["purchase_date"],
+                  expiry_date: attributes[:foods][i]["expiry_date"],
+                  price: attributes[:foods][i]["price"],
+                  category_id: attributes[:foods][i]["category_id"],
+                  give_id: attributes[:foods][i]["give_id"],
+                  box_id: attributes[:foods][i]["box_id"]
+                )
+            end
+            i += 1
+          end
+      end
+      count += 1
+    # newアクションのとき
+    else
+      self.foods = FORM_COUNT.times.map { Food.new }
+    end
+  end
 
   # fields_forを使用するために必要
   # fields_forの第一引数として用いる
@@ -75,8 +110,6 @@ class Form::FoodCollection < Form::Base
         if food.availability
           f = Food.new(box_id: box_id)
           food.box_id = f.box_id
-          # category_idを付与できるまで、一時的な処置
-          # food.category_id = 1
           is_success = false unless food.save
           ava_count += 1
         end
@@ -93,8 +126,41 @@ class Form::FoodCollection < Form::Base
       return is_success
   end
 
+  # TODO : 登録済食材の個数によらず、フォームを常に5つ表示させる(category_idに連動させて)
+  # TODO : 食材の削除ができる
+  # TODO : validationのチェック
+  def update(box)
+    is_success = true
+    i = 0
+    Food.transaction do
+      box.foods.each do |food|
+        food.valid?
+        f = Food.new(box_id: box.id)
+        food.box_id = f.box_id
+        binding.pry
+        is_success = false unless food.update(
+          food_title: foods[i]["food_title"],
+          number_title: foods[i]["number_title"],
+          purchase_date: foods[i]["purchase_date"],
+          expiry_date: foods[i]["expiry_date"],
+          price: foods[i]["price"],
+          give_id: foods[i]["give_id"]
+        )
+        i += 1
+      end
+    raise ActiveRecord::RecordInvalid unless is_success
+    end
+
+    rescue
+      p 'error'
+    ensure
+      return is_success
+  end
+
+end
+
     # errors = []
-    # # Foodクラスの中でどれか1つでも例外が発生すると、ロールバックしてくれる。登録するかしないかのどちらか。
+    ## Foodクラスの中でどれか1つでも例外が発生すると、ロールバックしてくれる。登録するかしないかのどちらか。
     # Food.transaction do
     #   # フォーム入力されたオブジェクトのfoods(3つの食材が配列として格納されている)を1つずつDBに保存する
     #   self.foods.map do |food|
@@ -125,4 +191,3 @@ class Form::FoodCollection < Form::Base
     # #   return true
     # # rescue => e
     # #   return false
-end
