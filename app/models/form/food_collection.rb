@@ -36,56 +36,66 @@ class Form::FoodCollection < Form::Base
     if attributes.present?
       # self.foods = attributes.map do |value|
       # editアクションが選択されたとき、1つのレコードを保存することはできた
-      # TODO:category IDに応じて、登録済食材を表示させる
+      # TODO : タブ毎にcategory_idに応じて、表示させる食材を定義していく
       # 実装手順
       # 1) FORM_COUNT×タブの分だけ、空のフォームを生成する
-      # 2) 1)を一つずつ参照し、@formを代入していく。
-      # 
-      # 3) そのとき、category_idによって、インスタンスの作成箇所を変える。
-      i = 0
+      # 2) case文でタブ毎にcateogry_idを照合し、idと合致したときだけ、食材を格納
+      # 3) すでに登録されているattributesをチェックし終わったら、次のタブの照合に移る。
+
+      att = 0
       count = 1
-      self.foods = FORM_COUNT.times.map { Food.new }
       case count
         # fields_for1回目(タブがfish)
         when 1 then
-          FORM_COUNT.times do
-            if attributes[:foods][i].present? && attributes[:foods][i]["category_id"] == 1
-              self.foods[i] =
+          self.foods = FORM_COUNT.times.map { Food.new }
+          attr_foods = attributes[:foods]
+          num = 0
+          # attributesを1つずつチェック
+          attr_foods.each do
+            if attr_foods[num]["category_id"] == 1
+              self.foods[att] =
                 Food.new(
                   # availability: value["availability"],
-                  food_title: attributes[:foods][i]["food_title"],
-                  number_title: attributes[:foods][i]["number_title"],
-                  purchase_date: attributes[:foods][i]["purchase_date"],
-                  expiry_date: attributes[:foods][i]["expiry_date"],
-                  price: attributes[:foods][i]["price"],
-                  category_id: attributes[:foods][i]["category_id"],
-                  give_id: attributes[:foods][i]["give_id"],
-                  box_id: attributes[:foods][i]["box_id"]
+                  food_title: attributes[:foods][num]["food_title"],
+                  number_title: attributes[:foods][num]["number_title"],
+                  purchase_date: attributes[:foods][num]["purchase_date"],
+                  expiry_date: attributes[:foods][num]["expiry_date"],
+                  price: attributes[:foods][num]["price"],
+                  category_id: attributes[:foods][num]["category_id"],
+                  give_id: attributes[:foods][num]["give_id"],
+                  box_id: attributes[:foods][num]["box_id"]
                 )
-            end
-            i += 1
+                att += 1
+              end
+            num += 1
           end
         # fields_for2回目(タブがVegitable)
         when 2 then
-          FORM_COUNT.times do
-            if attributes[:foods][i].present? && attributes[:foods][i]["category_id"] == 2
-              self.foods[i] =
+          self.foods = FORM_COUNT.times.map { Food.new }
+          attr_foods = attributes[:foods]
+          num = 0
+          # attributesを1つずつチェック
+          attr_foods.each do
+            if attr_foods[num]["category_id"] == 2
+              self.foods[att] =
                 Food.new(
                   # availability: value["availability"],
-                  food_title: attributes[:foods][i]["food_title"],
-                  number_title: attributes[:foods][i]["number_title"],
-                  purchase_date: attributes[:foods][i]["purchase_date"],
-                  expiry_date: attributes[:foods][i]["expiry_date"],
-                  price: attributes[:foods][i]["price"],
-                  category_id: attributes[:foods][i]["category_id"],
-                  give_id: attributes[:foods][i]["give_id"],
-                  box_id: attributes[:foods][i]["box_id"]
+                  food_title: attributes[:foods][num]["food_title"],
+                  number_title: attributes[:foods][num]["number_title"],
+                  purchase_date: attributes[:foods][num]["purchase_date"],
+                  expiry_date: attributes[:foods][num]["expiry_date"],
+                  price: attributes[:foods][num]["price"],
+                  category_id: attributes[:foods][num]["category_id"],
+                  give_id: attributes[:foods][num]["give_id"],
+                  box_id: attributes[:foods][num]["box_id"]
                 )
-            end
-            i += 1
+                att += 1
+              end
+            num += 1
           end
       end
       count += 1
+      binding.pry
     # newアクションのとき
     else
       self.foods = FORM_COUNT.times.map { Food.new }
@@ -137,7 +147,6 @@ class Form::FoodCollection < Form::Base
         food.valid?
         f = Food.new(box_id: box.id)
         food.box_id = f.box_id
-        binding.pry
         is_success = false unless food.update(
           food_title: foods[i]["food_title"],
           number_title: foods[i]["number_title"],

@@ -24,23 +24,23 @@
     <%= form_with model: @form, url: box_path, method: :PATCH, local: true do |form| %>
       <%= render 'shared/foods_error_messages', model: @form %>
       <div class="content">
-        <%= render partial: 'shared/fields_for', locals:{ form: form, i: 1 } %>
+        <%= render partial: 'shared/edit_fields_for', locals:{ form: form } %>
       </div>
 
       <div class="content">
-        <%= render partial: 'shared/fields_for', locals:{ form: form, i: 2 } %>
+        <%= render partial: 'shared/edit_fields_for', locals:{ form: form } %>
       </div>
 
       <div class="content">
-          <%= render partial: 'shared/fields_for', locals:{ form: form, i: 3 } %>
+        <%= render partial: 'shared/edit_fields_for', locals:{ form: form } %>
       </div>
 
       <div class="content">
-        <%= render partial: 'shared/fields_for', locals:{ form: form, i: 4 } %>
+        <%= render partial: 'shared/edit_fields_for', locals:{ form: form } %>
       </div>
 
       <div class="content">
-        <%= render partial: 'shared/fields_for', locals:{ form: form, i: 5 } %>
+        <%= render partial: 'shared/edit_fields_for', locals:{ form: form } %>
       </div>
 
       <div class="sell-btn-contents">

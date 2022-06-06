@@ -34,7 +34,6 @@ class BoxesController < ApplicationController
     @box = Box.find(params[:id])
     @user = User.find(@box.user.id)
     @form = Form::FoodCollection.new(foods: @box.foods)
-    binding.pry
   end
 
   def update

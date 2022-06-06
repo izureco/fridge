@@ -1,0 +1,28 @@
+<h3>STEP2 : 登録する食材の情報を入力しよう!</h3>
+<table class="item-table">
+  <thead>
+    <tr class="item-tr">
+      <th>登録</th>
+      <th>食材名</th>
+      <th>個数</th>
+      <th>購入日</th>
+      <th>消費期限</th>
+      <th>購入価格</th>
+    </tr>
+  </thead>
+  <%# TODO : フォーム追加できるようにする。https://web-tsuku.life/add-form-appendchild/ %>
+  <tbody>
+    <%# fields_for : 異なるモデル(子モデル)を編集できるようになる %>
+    <%# 今回の場合は、Box > Foodなので、Foodモデルを編集 %>
+    <%= form.fields_for :foods do |f| %>
+      <tr class="item-tr">
+        <td><%= f.check_box :availability %></td>
+        <td><%= f.text_field :food_title, class:"td-food" %></td>
+        <td><%= f.number_field :number_title, min: 1, max: 99 %></td>
+        <td><%= f.date_field :purchase_date, class:"td-date"%></td>
+        <td><%= f.date_field :expiry_date, class:"td-date" %></td>
+        <td><%= f.text_field :price, class:"td-price" %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
