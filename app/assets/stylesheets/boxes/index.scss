@@ -9,7 +9,7 @@ a {
 /* 画面上部の「人生を変えるフリマアプリ」帯部分 */
 .title-contents {
   width: 100vw;
-  height: 500px;
+  // height: 500px;
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
@@ -319,6 +319,16 @@ a {
 	background-color: #fff;
 	border: 1px solid #2F70BE;
 	border-left: 5px solid #2F70BE;
+}
+
+// pagination
+.foot-pagination{
+  text-align: center;
+  margin: 30px 0;
+}
+
+.page-item{
+  font-size: 20px;
 }
 
 // Swiper①

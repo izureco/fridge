@@ -18,49 +18,7 @@
       </div>
     </div>
   </div>
-
-  <%# <div class='select-reason-contents'>
-    <h2 class='title'>
-      FRiGEの3つの特徴
-    </h2>
-    <ul class='reason-lists'>
-      <li class='list'>
-        <%= image_tag 'salespoint1.jpeg', class:"list-pict" %>
-        <%# <span class='reason-list-number'>1</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>簡単</span>
-          にMy冷蔵庫登録
-        </h3>
-        <p class='reason-list-description'>
-          スマホで冷蔵庫の食材をらくらく入力
-        </p> %>
-      <%# </li>
-      <li class='list'>
-        <%= image_tag "salespoint2.jpeg", class:"list-pict" %>
-        <%# <span class='reason-list-number'>2</span>
-        <h3 class='reason-list-text'>
-          <span class='reason-list-blue-text'>時短</span>
-          機能がいっぱい
-        </h3>
-        <p class='reason-list-description'>
-          いろんなユーザーの冷蔵庫から買い出しのアイデアをいただこう!<br>
-          今ある食材からレシピを提案してくれる!
-        </p> %>
-      <%# </li>
-      <li class='list'> %>
-        <%# <%= image_tag "salespoint3.jpeg", class:"list-pict" %>
-        <%# <span class='reason-list-number'>3</span>
-        <h3 class='reason-list-text'>
-          不要な食べ物を
-          <span class='reason-list-blue-text'>必要な人に</span>
-        </h3>
-        <p class='reason-list-description'> %>
-          <%# 食べなくなった食材をお譲りできます!
-        </p>
-      </li>
-    </ul>
-  </div> %>
-
+  
   <%# 冷蔵庫一覧 %>
   <div class='item-contents'>
     <h2 class='title'>みんなのMY FRiDGE</h2>
@@ -98,6 +56,11 @@
   </div>
   <%# /商品一覧 %>
 </div>
+
+<div class="foot-pagination">
+  <%= paginate @boxes, theme: 'bootstrap-5' %>
+</div>
+
 <%= render "shared/footer" %>
 
 <% else %>

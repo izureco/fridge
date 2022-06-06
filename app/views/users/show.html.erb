@@ -1,36 +1,114 @@
 <%= render "shared/header" %>
 
-  <div class='item-contents'>
-    <div class="subtitle" ><%= @user.nickname %>さんのMY FRiDGE
+<div class='user-main'>
+  <%# ユーザー情報エリア %>
+  <div class="user-info-wrap">
+    <div class='user-header-info'>
+      <h2 class='user-header-text'>
+        <%= @user.nickname %>さんの登録情報
+      </h2>
     </div>
-    <ul class='item-lists'>
-      <% @boxes.each do |box| %>
-        <li class='list'>
-          <%= link_to box_path(box.id) do %>
-            <div class='item-img-content'>
-              <%= image_tag box.image, class: "item-img" %>
-              <h3 class='item-name'>
-                <%= box.box_title %>
-              </h3>
-            </div>
-            <div class='item-info'>
-            <% count = 0%>
-            <% @box_tag_list.each do |relation| %>
-              <% if box.id == relation.box_id %>
-                <div class='item-tag'>
-                  <%= relation.boxtag.tag_name %>
-                  <% count = count + 1 %>
-                </div>
-              <% end %>
-            <% end %>
-            <% if count == 0 %>
-              <div class='item-tag'>未登録</div>
-            <% end %>
-            </div>
-          <% end %>
-        </li>
-      <% end %>
-    </ul>
+    <%= render 'shared/error_messages', model: @user %>
+
+    <div class="user-middle-info">
+      <p class='user-middle-text'>
+        ユーザー情報
+      </p>
+    </div>
+
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">ニックネーム</label>
+      </div>
+      <%= @user.nickname %>
+    </div>
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">メールアドレス</label>
+      </div>
+      <%= @user.email %>
+    </div>
+    <div class="user-middle-info">
+      <p class='user-middle-text'>
+        パーソナリティ情報
+      </p>
+    </div>
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">家族構成</label>
+      </div>
+      <div class='input-name-wrap'>
+          <%= @user.family_type.name %>
+      </div>
+    </div>
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">外食の頻度</label>
+      </div>
+      <div class='input-name-wrap'>
+          <%= @user.eatout_freq.name %>
+      </div>
+    </div>
+    <div class="user-group">
+      <div class='user-text-wrap'>
+        <label class="user-text">一般的な食欲</label>
+      </div>
+      <div class='input-name-wrap'>
+          <%= @user.appetite.name %>
+      </div>
+    </div>
+    <%= link_to '編集', edit_user_registration_path, class: "user-edit-btn" %>
   </div>
+
+  <%# 冷蔵庫エリア %>
+  <div class='user-box-wrap'>
+    <div class='user-header-info'>
+      <h2 class='user-header-text'>
+        <%= @user.nickname %>さんのMY FRiDGE
+      </h2>
+    </div>
+    <%# 冷蔵庫が1つでも登録されていたら、冷蔵庫を表示 %>
+    <% if @boxes.present? %>
+      <ul class='item-lists'>
+        <% @boxes.each do |box| %>
+          <li class='list'>
+            <%= link_to box_path(box.id) do %>
+              <div class='item-img-content'>
+                <%= image_tag box.image, class: "item-img" %>
+                <h3 class='item-name'>
+                  <%= box.box_title %>
+                </h3>
+              </div>
+              <div class='item-info'>
+              <% count = 0%>
+              <% @box_tag_list.each do |relation| %>
+                <% if box.id == relation.box_id %>
+                  <div class='item-tag'>
+                    <%= relation.boxtag.tag_name %>
+                    <% count = count + 1 %>
+                  </div>
+                <% end %>
+              <% end %>
+              <% if count == 0 %>
+                <div class='item-tag'>未登録</div>
+              <% end %>
+              </div>
+            <% end %>
+          </li>
+        <% end %>
+      </ul>
+
+    <%# 冷蔵庫が登録されていないときは、登録ボタンを表示 %>
+    <% else %>
+      <div class="title-box">
+        <h2 class='title'>MY冷蔵庫を登録</h2>
+        <p>冷蔵庫の食材を登録して、今日の献立のヒントにしよう!</p>
+        <div class="title-img-box">
+          <%= link_to image_tag("fridge-index-box1.png", class: "title-item-img"), new_box_path %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>
 
 <%= render "shared/footer" %>
