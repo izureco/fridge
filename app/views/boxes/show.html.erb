@@ -126,14 +126,16 @@
 
 
     <% else %>
-    <div class="items-sell-main">
-      <div class="subtitle" ><%= @box.box_title %>の食材が登録されていません
+      <div class="items-sell-main">
+        <div class="subtitle" ><%= @box.box_title %>の食材が登録されていません
+        </div>
+        <div class="sell-btn-contents">
+        <% if user_signed_in? && current_user.id == @box.user_id %>
+          <%= link_to "食材を登録しましょう!", new_box_food_path(@box.id), data: {"turbolinks" => false }, class:"sell-btn" %>
+        <% end %>
+          <%= link_to 'もどる', root_path, class:"back-btn-show" %>
+        </div>
       </div>
-      <div class="sell-btn-contents">
-        <%= link_to "食材を登録しましょう!", new_box_food_path(@box.id), data: {"turbolinks" => false }, class:"sell-btn" %>
-        <%= link_to 'もどる', root_path, class:"back-btn-show" %>
-      </div>
-    </div>
     <% end %>
   </div>
 <%= render "shared/footer" %>

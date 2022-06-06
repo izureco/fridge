@@ -19,88 +19,88 @@ class Form::FoodCollection < Form::Base
   # 初期化メソッド
   # 引数として, attributesはハッシュが格納される。
   # もし引数が無いとき(.newだけ)は、attributesに空のハッシュが格納される。
-  # def initialize(attributes = {})
-  #   # super : 親クラスのassign_attributesメソッドを呼び出す
-  #   # assing_attributes : 特定のattributesを変更するメソッド。DBへの保存は行わない。保存するなら、saveかupdate!
-  #   super attributes
-  #   # <new/createアクションのとき>
-  #   ## もしfoodsが空なら、フォームとして5つのインスタンスを作成する。
-
-  #   # <edit/updateアクションのとき>
-  #   ## foodsが存在するなら、フォームにFood.new(attributes)すれば入るかな?
-  #   self.foods = FORM_COUNT.times.map { Food.new() } unless self.foods.present?
-  # end
-
   def initialize(attributes = {})
-    # editのとき
-    if attributes.present?
-      # self.foods = attributes.map do |value|
-      # editアクションが選択されたとき、1つのレコードを保存することはできた
-      # TODO : タブ毎にcategory_idに応じて、表示させる食材を定義していく
-      # 実装手順
-      # 1) FORM_COUNT×タブの分だけ、空のフォームを生成する
-      # 2) case文でタブ毎にcateogry_idを照合し、idと合致したときだけ、食材を格納
-      # 3) すでに登録されているattributesをチェックし終わったら、次のタブの照合に移る。
+    # super : 親クラスのassign_attributesメソッドを呼び出す
+    # assing_attributes : 特定のattributesを変更するメソッド。DBへの保存は行わない。保存するなら、saveかupdate!
+    super attributes
+    # <new/createアクションのとき>
+    ## もしfoodsが空なら、フォームとして5つのインスタンスを作成する。
 
-      att = 0
-      count = 1
-      case count
-        # fields_for1回目(タブがfish)
-        when 1 then
-          self.foods = FORM_COUNT.times.map { Food.new }
-          attr_foods = attributes[:foods]
-          num = 0
-          # attributesを1つずつチェック
-          attr_foods.each do
-            if attr_foods[num]["category_id"] == 1
-              self.foods[att] =
-                Food.new(
-                  # availability: value["availability"],
-                  food_title: attributes[:foods][num]["food_title"],
-                  number_title: attributes[:foods][num]["number_title"],
-                  purchase_date: attributes[:foods][num]["purchase_date"],
-                  expiry_date: attributes[:foods][num]["expiry_date"],
-                  price: attributes[:foods][num]["price"],
-                  category_id: attributes[:foods][num]["category_id"],
-                  give_id: attributes[:foods][num]["give_id"],
-                  box_id: attributes[:foods][num]["box_id"]
-                )
-                att += 1
-              end
-            num += 1
-          end
-        # fields_for2回目(タブがVegitable)
-        when 2 then
-          self.foods = FORM_COUNT.times.map { Food.new }
-          attr_foods = attributes[:foods]
-          num = 0
-          # attributesを1つずつチェック
-          attr_foods.each do
-            if attr_foods[num]["category_id"] == 2
-              self.foods[att] =
-                Food.new(
-                  # availability: value["availability"],
-                  food_title: attributes[:foods][num]["food_title"],
-                  number_title: attributes[:foods][num]["number_title"],
-                  purchase_date: attributes[:foods][num]["purchase_date"],
-                  expiry_date: attributes[:foods][num]["expiry_date"],
-                  price: attributes[:foods][num]["price"],
-                  category_id: attributes[:foods][num]["category_id"],
-                  give_id: attributes[:foods][num]["give_id"],
-                  box_id: attributes[:foods][num]["box_id"]
-                )
-                att += 1
-              end
-            num += 1
-          end
-      end
-      count += 1
-      binding.pry
-    # newアクションのとき
-    else
-      self.foods = FORM_COUNT.times.map { Food.new }
-    end
+    # <edit/updateアクションのとき>
+    ## foodsが存在するなら、フォームにFood.new(attributes)すれば入るかな?
+    self.foods = FORM_COUNT.times.map { Food.new() } unless self.foods.present?
   end
+
+  # def initialize(attributes = {})
+  #   # editのとき
+  #   if attributes.present?
+  #     # self.foods = attributes.map do |value|
+  #     # editアクションが選択されたとき、1つのレコードを保存することはできた
+  #     # TODO : タブ毎にcategory_idに応じて、表示させる食材を定義していく
+  #     # 実装手順
+  #     # 1) FORM_COUNT×タブの分だけ、空のフォームを生成する
+  #     # 2) case文でタブ毎にcateogry_idを照合し、idと合致したときだけ、食材を格納
+  #     # 3) すでに登録されているattributesをチェックし終わったら、次のタブの照合に移る。
+
+  #     att = 0
+  #     count = 1
+  #     case count
+  #       # fields_for1回目(タブがfish)
+  #       when 1 then
+  #         self.foods = FORM_COUNT.times.map { Food.new }
+  #         attr_foods = attributes[:foods]
+  #         num = 0
+  #         # attributesを1つずつチェック
+  #         attr_foods.each do
+  #           if attr_foods[num]["category_id"] == 1
+  #             self.foods[att] =
+  #               Food.new(
+  #                 # availability: value["availability"],
+  #                 food_title: attributes[:foods][num]["food_title"],
+  #                 number_title: attributes[:foods][num]["number_title"],
+  #                 purchase_date: attributes[:foods][num]["purchase_date"],
+  #                 expiry_date: attributes[:foods][num]["expiry_date"],
+  #                 price: attributes[:foods][num]["price"],
+  #                 category_id: attributes[:foods][num]["category_id"],
+  #                 give_id: attributes[:foods][num]["give_id"],
+  #                 box_id: attributes[:foods][num]["box_id"]
+  #               )
+  #               att += 1
+  #             end
+  #           num += 1
+  #         end
+  #       # fields_for2回目(タブがVegitable)
+  #       when 2 then
+  #         self.foods = FORM_COUNT.times.map { Food.new }
+  #         attr_foods = attributes[:foods]
+  #         num = 0
+  #         # attributesを1つずつチェック
+  #         attr_foods.each do
+  #           if attr_foods[num]["category_id"] == 2
+  #             self.foods[att] =
+  #               Food.new(
+  #                 # availability: value["availability"],
+  #                 food_title: attributes[:foods][num]["food_title"],
+  #                 number_title: attributes[:foods][num]["number_title"],
+  #                 purchase_date: attributes[:foods][num]["purchase_date"],
+  #                 expiry_date: attributes[:foods][num]["expiry_date"],
+  #                 price: attributes[:foods][num]["price"],
+  #                 category_id: attributes[:foods][num]["category_id"],
+  #                 give_id: attributes[:foods][num]["give_id"],
+  #                 box_id: attributes[:foods][num]["box_id"]
+  #               )
+  #               att += 1
+  #             end
+  #           num += 1
+  #         end
+  #     end
+  #     count += 1
+  #     binding.pry
+  #   # newアクションのとき
+  #   else
+  #     self.foods = FORM_COUNT.times.map { Food.new }
+  #   end
+  # end
 
   # fields_forを使用するために必要
   # fields_forの第一引数として用いる
